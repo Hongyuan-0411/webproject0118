@@ -55,12 +55,12 @@ const BASE_URL = (process.env.BASE_URL || 'https://api.defapi.org').replace(/\/$
 
 // Suno API Key (用于 defapi.org)
 // 优先使用环境变量 SUNO_API_KEY，如果没有则使用下面的默认值
-const DEFAULT_SUNO_API_KEY = '';
+const DEFAULT_SUNO_API_KEY = 'dk-f07493ffbfd50be8bcd66a3b7eb6618b';
 
 // DashScope API Key (用于阿里云图片生成)
 // 从 api.env 文件读取，如果没有则使用下面的默认值
 // 注意：确保使用正确的 DashScope API key（格式：sk-开头）
-const DEFAULT_DASHSCOPE_API_KEY = '';
+const DEFAULT_DASHSCOPE_API_KEY = 'sk-de7b2127a28a41a98a5c76572b790c3b';
 
 // defapi.org 认证方式配置
 // 某些 API 可能使用 X-API-Key 而不是 Authorization: Bearer
