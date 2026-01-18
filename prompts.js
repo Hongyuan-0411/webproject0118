@@ -1,0 +1,278 @@
+// 提示词工程文件
+// 用于3-6岁自闭症儿童认知能力结构化提升系统
+
+/**
+ * 1. 目标分解提示词（用于通义千问LLM分解用户输入的目标）
+ */
+function getDecomposePrompt(userGoal, learningFocus, musicStyle, musicVoice, pictureBookStyle, characterType) {
+  const focusText = learningFocus ? `\n学习重点：${learningFocus}` : '';
+  
+  return `你是一位专业的特殊教育专家，专门为3-6岁自闭症儿童设计认知学习方案。
+
+用户目标：${userGoal}${focusText}
+音乐风格：${musicStyle}
+音乐声音：${musicVoice}
+绘本风格：${pictureBookStyle}
+角色名称：乐乐（固定，不要改名）
+角色类型：${characterType || '男生'}
+
+请将上述目标分解为3-5个循序渐进的学习步骤，每个步骤应该：
+${learningFocus ? '1. 特别关注学习重点"' + learningFocus + '"，确保每个步骤都围绕这个重点内容展开，重点突出需要让孩子学会的内容\n' : ''}${learningFocus ? '2. ' : '1. '}简单明确，适合3-6岁自闭症儿童理解
+${learningFocus ? '3. ' : '2. '}循序渐进，内容需要简单、具体、易于理解
+${learningFocus ? '4. ' : '3. '}每个步骤可以独立成为一个学习单元
+${learningFocus ? '5. ' : '4. '}步骤之间逻辑连贯，形成完整的学习路径
+${learningFocus ? '6. ' : '5. '}每个步骤之间的画面需要有连续性，不要出现跳跃、人物、目标物不一致的情况
+${learningFocus ? '7. ' : '6. '}严格避免出现任何可能恐吓或引起孩子不适的内容，包括但不限于：
+   - 恐怖、黑暗、阴森的画面或情节
+   - 暴力、冲突、争吵的场景
+   - 悲伤、哭泣、害怕的情绪表达
+   - 危险物品（如刀具、火、尖锐物品等）
+   - 怪物、鬼怪、恐怖角色
+   - 突然的惊吓、巨响、快速移动的物体
+   - 任何可能引起焦虑、恐惧的内容
+${learningFocus ? '8. ' : '7. '}每个步骤的音乐时长控制在40秒左右
+${learningFocus ? '9. ' : '8. '}确保所有内容都是正面、积极、安全、温馨的
+
+请以JSON格式返回，格式如下（必须严格输出合法JSON，不要额外文字，不要Markdown代码块）：
+{
+  "steps": [
+    {
+      "step_number": 1,
+      "step_name": "步骤名称",
+      "step_description": "步骤详细描述",
+      "learning_objective": "学习目标"
+    }
+  ],
+  "character_name": "乐乐",
+  "character_description": "角色描述（20字以内）",
+  "character_sheet": {
+    "name": "乐乐",
+    "type": "角色类型（必须与用户选择一致，例如：男生/女生/爸爸/妈妈/动物/自定义）",
+    "age": "大约5岁（如为爸爸妈妈则写成人）",
+    "face": "脸型与五官特征（固定，例如：圆脸，大眼睛，微笑）",
+    "hair": "发型发色（固定）",
+    "outfit": "服装（固定，不换装）",
+    "accessory": "配饰（固定，可为空）",
+    "main_colors": ["主色1","主色2"],
+    "reference_prompt": "一句话角色设定卡：包含脸型/发型/衣服/配色/配饰，要求所有步骤完全一致，不换装不换发型不换画风"
+  }
+}`;
+}
+
+/**
+ * 2. 图片生成提示词（用于通义千问文生图）
+ */
+function getImagePrompt(step, characterName, characterDescription, stepNumber, totalSteps, characterSheet) {
+  const csText = characterSheet?.reference_prompt ? String(characterSheet.reference_prompt).trim() : '';
+  const csBlock = csText
+    ? `\n\n角色设定卡（必须严格遵守，所有步骤完全一致，不允许任何变化）：\n${csText}\n\n一致性硬规则：\n- 必须保持同一张脸、同一发型、同一衣服、同一配饰、同一主色调、同一画风\n- 禁止换装、禁止换发型、禁止变成不同人物/不同动物、禁止年龄变化\n- 如果无法保证一致性，请重新生成直到一致\n`
+    : `\n\n角色一致性硬规则（缺少设定卡时仍必须遵守）：\n- 角色必须出现在画面中\n- 所有步骤保持同一张脸、同一发型、同一衣服、同一画风，不换装不换发型\n`;
+
+  return `为3-6岁自闭症儿童创作“绘本场景插画”。\n\n学习内容：\n- 学习步骤：${step.step_name}\n- 步骤描述：${step.step_description}\n- 学习目标：${step.learning_objective}\n- 当前步骤：第${stepNumber}步，共${totalSteps}步\n- 角色：${characterName}${characterDescription ? `（${characterDescription}）` : ''}\n${csBlock}\n核心要求：\n1. **绘本场景（不要只画一个物体）**：学习对象必须处在一个温馨的生活场景中（家里/教室/公园/厨房/浴室/客厅等），并有适量背景元素，但画面不拥挤。\n2. **角色全程一致且必须出现**：角色必须出现在画面中，并严格遵守“角色设定卡/硬规则”，所有步骤保持同一位角色。\n3. **学习对象清晰可辨**：学习对象清晰、准确、占画面重要位置；角色可以指向/拿起/使用该对象。\n4. **符合生活常识**：场景与物品符合现实生活常识，不扭曲、不超现实。\n5. **画面简洁但不空**：色调明亮柔和，避免高刺激对比与复杂文字。\n6. **突出核心认知点**：通过角色动作突出要学的点（如洗手就在洗手台前洗手）。\n7. **严格安全性要求**：温馨安全正面，避免恐怖/暴力/危险物品等。\n8. **画面连续性**：多步骤尽量保持同一地点/同一角色/同一物品外观连续。\n9. **绘本风格统一**：儿童绘本插画风格，线条干净，色彩统一，温馨可爱。\n\n请生成一幅符合要求的绘本插画。`;
+}
+
+/**
+ * 3. 音乐生成提示词（用于Suno生成歌曲）
+ */
+function getMusicPrompt(step, characterName, musicStyle, stepNumber, totalSteps) {
+  // 根据音乐风格调整提示词，强调轻快活泼
+  const styleMap = {
+    '舒缓钢琴': 'gentle piano, soft, calming, peaceful, but still upbeat and cheerful',
+    '活泼儿歌': 'lively children song, upbeat, cheerful, fun, energetic, bouncy',
+    '节奏感强': 'rhythmic, energetic, engaging, upbeat, lively',
+    '温馨童谣': 'warm nursery rhyme, sweet, tender, but cheerful and light',
+  };
+  
+  const styleTags = styleMap[musicStyle] || 'children song, gentle, educational, upbeat, cheerful';
+
+  return `[主歌]
+${step.step_name}
+${step.step_description}
+Let's learn together
+With ${characterName} by our side
+
+[副歌]
+Step by step we go
+Learning every day
+${step.learning_objective}
+We're getting better, hooray!
+
+[主歌 2]
+Repeat and practice
+One more time, let's try
+${step.step_name}
+We can do it, you and I
+
+[副歌]
+Step by step we go
+Learning every day
+${step.learning_objective}
+We're getting better, hooray!
+
+音乐风格要求：
+- ${styleTags}
+- 适合3-6岁儿童
+- 轻快、活泼、朗朗上口的音调
+- 节奏明快但不急促，易于跟随
+- 旋律简单、易记、温馨友好
+- 音调明亮、欢快，传递快乐和正能量
+- **总时长控制在40-60秒之间**
+- 歌曲结构简单：1个Verse + Chorus重复1-2次，无前奏间奏
+- 严格避免任何可能恐吓或引起孩子不适的内容
+- 歌词和旋律必须正面、积极、安全、温馨
+
+**时长控制指令：**
+请在歌词开头添加 "[Duration: 40 seconds]" 或 "Make this song exactly 40 seconds long" 来明确时长要求。`;
+}
+
+/**
+ * 4. 歌词生成提示词（用于为每个步骤生成详细歌词）
+ */
+function getLyricsPrompt(step, characterName, musicStyle, musicVoice, stepNumber, totalSteps) {
+  const isLastStep = stepNumber === totalSteps;
+  
+  // 根据是否是最后一步，生成不同的提示词
+  if (isLastStep) {
+    // 最后一步：包含3个[Verse]和[Chorus]
+    return `你是一位专业的儿童音乐创作专家，专门为3-6岁自闭症儿童创作学习歌曲。
+
+学习步骤信息：
+- 步骤名称：${step.step_name}
+- 步骤描述：${step.step_description}
+- 学习目标：${step.learning_objective}
+- 角色名称：${characterName}
+- 音乐风格：${musicStyle}
+- 音乐声音：${musicVoice}
+- 当前步骤：第${stepNumber}步，共${totalSteps}步（这是最后一步）
+
+请为这个学习步骤创作一首简单、有趣的儿童学习歌曲，要求：
+
+1. 歌曲时长和结构（严格控制40秒）：
+   - **总时长必须严格控制在35-45秒之间**
+   - 歌曲结构：2-3个主歌（Verse）+ 1-2次副歌（Chorus）
+   - 主歌（Verse）：每段2-4行，每行4-10个字
+   - 副歌（Chorus）：2-3行，可以适当重复
+   - 适当使用重复的句子和词语，增强记忆点
+   - 直接进入第一个主歌，不要前奏、间奏和结尾
+
+2. 歌词要求（简单、重复、有教育意义）：
+   - **总歌词行数：8-15行（包括重复部分）**
+   - 每行歌词4-10个字，可以灵活变化
+   - 使用简单、重复的句式，类似经典儿歌
+   - 包含角色${characterName}的名字
+   - 突出当前步骤的核心概念
+   - 歌词内容要正面、积极、有教育意义
+   - 可以适当使用拟声词和重复的词语
+   - 严格避免任何可能引起不适的内容
+
+3. 音乐风格和特点：
+   - 调性：C大调、F大调或G大调（整首保持一致）
+   - 节拍：2/4或4/4拍（整首保持一致）
+   - 音域：适合儿童演唱的舒适音域（整首保持一致）
+   - 节奏：以四分音符和八分音符为主，节拍稳定，不抢拍不拖拍
+   - 风格：轻快、活泼、朗朗上口
+
+5. **人声一致性硬规则（所有步骤必须完全一致）**：
+   - 人声音色：必须像同一个人演唱（不要每一步换歌手/换音色）
+   - 音调与音高范围：保持一致，不要忽高忽低
+   - 歌唱方式：吐字清晰、自然童声/亲和成人声（按${musicVoice}选择保持一致），不要突然变成说唱/美声/戏腔
+   - 歌唱节律：节奏规整、稳定，强拍起唱，不要弱起
+   - 速度与感觉：保持一致（不要这一首很慢、下一首很快）
+
+4. 输出格式：
+   - 只输出歌词内容
+   - 使用[主歌]和[副歌]标签
+   - 不要包含任何风格说明或标记
+   - 确保歌词内容正面、积极、安全
+
+示例格式：
+[主歌]
+${characterName}小朋友，快来看
+这里有个新发现
+我们一起学起来
+快乐学习真简单
+
+[副歌]
+啦啦啦，真有趣
+学习知识不费力
+${characterName}真聪明
+快乐成长每一天
+
+[主歌]
+${step.step_name}要记牢
+一步一步来学习
+${characterName}最棒了
+我们一起加加油
+
+[副歌]
+啦啦啦，真有趣
+学习知识不费力
+${characterName}真聪明
+快乐成长每一天
+
+**重要提示：**
+- 尽量使用“重复句 + 少量变化”的儿歌写法
+- 每行4-10个字，长短有变化，但不要太长
+- 总行数建议8-15行（含重复），以保证时长约40秒
+- 确保总时长在35-45秒之间
+- **只输出纯歌词内容，不要包含任何时长控制指令、说明文字或元数据**
+
+请按照以上要求创作歌词，确保总时长在40秒左右。`;
+  } else {
+    // 非最后一步：建议用更像经典儿歌的一段体结构（可带简单重复句），不要写太“口号式”
+    return `你是一位专业的儿童音乐创作专家，专门为3-6岁自闭症儿童创作认知学习儿歌。
+
+学习步骤信息：
+- 步骤名称：${step.step_name}
+- 步骤描述：${step.step_description}
+- 学习目标：${step.learning_objective}
+- 角色名称：${characterName}
+- 音乐风格：${musicStyle}
+- 音乐声音：${musicVoice}
+- 当前步骤：第${stepNumber}步，共${totalSteps}步（这不是最后一步）
+
+请写一首更符合经典儿歌特点的歌词（类似“两只老虎/找朋友/小兔子乖乖”的口吻），要求：
+
+1. 时长与节奏（40-60秒）：
+   - **总时长控制在40-60秒**
+   - 建议：1-2段[Verse] + 1段可重复的[Chorus]（或把重复句写进Verse里也可以）
+   - 每段2-4行，整首建议6-10行（包含重复），不要写长
+
+2. 语言风格（更像儿歌，适合3-6岁）：
+   - 每行尽量短（建议4-8个字）
+   - 多用重复句、叠词、拟声词（如：啦啦啦、叮叮叮、咚咚咚）
+   - 朗朗上口、容易学，可以重复使用同一两句
+   - 必须包含角色${characterName}，并围绕学习目标反复强化1-2个关键词
+   - 避免解释说明，不要写成故事文章；要像“唱出来”的句子
+
+3. **强拍起唱（不要弱起）**：
+   - **务必确保每一句歌词/每个乐句都从小节第1拍（强拍）开始**
+   - 不要用“嗯、啊、啦(弱起)”在句首引导；句首直接是有意义的词
+
+4. 音乐特性提示（供模型把握儿歌感）：
+   - 调性偏C/F/G大调
+   - 节拍多为2/4或4/4，节奏规整
+   - 旋律简单易记，重复性强
+
+5. **人声一致性硬规则（所有步骤必须完全一致）**：
+   - 人声音色：必须像同一个人演唱（不要每一步换歌手/换音色）
+   - 音调与音高范围：保持一致，不要忽高忽低
+   - 歌唱方式：吐字清晰、自然（按${musicVoice}设定保持一致），不要突然变成说唱/美声/戏腔
+   - 歌唱节律：节奏规整、稳定，强拍起唱，不要弱起
+   - 速度与感觉：保持一致（不要这一首很慢、下一首很快）
+
+5. 输出格式：
+   - 只输出歌词
+   - 使用[主歌]和[副歌]标签（如果不用副歌，也至少要有[主歌]标签）
+   - 不要输出BPM/调性说明/任何元信息
+
+请直接输出歌词。`;
+  }
+}
+
+module.exports = {
+  getDecomposePrompt,
+  getImagePrompt,
+  getMusicPrompt,
+  getLyricsPrompt,
+};

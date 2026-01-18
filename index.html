@@ -1,0 +1,2816 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>音绘星 - 自闭症儿童认知能力结构化提升系统</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --bg: #f7fbff;
+      --panel: #ffffff;
+      --panel-2: #f2f7ff;
+      --stroke: #e6eefc;
+      --text: #1f2a44;
+      --muted: #6b7a99;
+      --brand: #2f54eb;
+      --brand-2: #52c41a;
+      --warn: #fa8c16;
+      --shadow: 0 10px 30px rgba(47,84,235,0.10);
+      --shadow-soft: 0 6px 16px rgba(31,42,68,0.08);
+      --radius: 14px;
+    }
+
+    body { 
+      font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans"; 
+      margin: 0; 
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(1200px 600px at 20% 10%, #eaf2ff 0%, transparent 60%),
+                  radial-gradient(900px 500px at 80% 30%, #fff4e6 0%, transparent 60%),
+                  var(--bg);
+      color: var(--text);
+    }
+
+    /* 更适合儿童：更大的默认字号 */
+    body, input, select, textarea, button { font-size: 15px; }
+    
+    .container {
+      display: flex;
+      height: 100vh;
+      gap: 14px;
+      padding: 14px;
+    }
+    
+    /* 左侧面板 - 更像儿童应用的侧栏卡片 */
+    .left-panel {
+      width: 320px;
+      min-width: 300px;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      padding: 16px;
+      overflow-y: auto;
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    /* 右侧面板 */
+    .right-panel {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      background: rgba(255,255,255,0.70);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    h1 { font-size: 22px; margin: 0 0 10px 0; letter-spacing: 0.5px; }
+    h2 { font-size: 18px; margin: 18px 0 10px 0; }
+    h3 { font-size: 16px; margin: 12px 0 8px 0; }
+    
+    label { 
+      font-weight: 700; 
+      display: block; 
+      margin-top: 12px; 
+      font-size: 14px;
+      color: var(--text);
+    }
+    
+    input, select, textarea { 
+      width: 100%; 
+      padding: 10px 12px; 
+      margin: 6px 0 12px; 
+      border: 1px solid var(--stroke); 
+      border-radius: 12px; 
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 2px 0 rgba(47,84,235,0.05) inset;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(47,84,235,0.55);
+      box-shadow: 0 0 0 4px rgba(47,84,235,0.12);
+    }
+    
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    
+    button { 
+      padding: 12px 16px; 
+      cursor: pointer; 
+      background: linear-gradient(180deg, #4d72ff 0%, var(--brand) 100%);
+      color: white; 
+      border: none; 
+      border-radius: 14px; 
+      font-size: 15px; 
+      font-weight: 800;
+      width: 100%;
+      margin: 6px 0;
+      box-shadow: var(--shadow);
+      transition: transform 0.08s ease, filter 0.15s ease;
+    }
+    
+    button:hover { filter: brightness(1.02); }
+    button:active { transform: translateY(1px) scale(0.99); }
+    button:disabled { background: #cbd5e1; box-shadow: none; cursor: not-allowed; }
+
+    /* 更适合儿童：按钮带图标时更居中 */
+    button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+    
+    .nav-buttons {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0;
+    }
+    
+    .nav-buttons button {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 12px;
+    }
+    
+    .btn-prev { background: linear-gradient(180deg, #69d13b 0%, var(--brand-2) 100%); }
+    .btn-next { background: linear-gradient(180deg, #4d72ff 0%, var(--brand) 100%); }
+    .btn-regenerate { background: linear-gradient(180deg, #ff9a3f 0%, var(--warn) 100%); }
+    
+    .muted { color: var(--muted); font-size: 12px; }
+    .ok { color: #0a7b2a; font-weight: 700; }
+    .err { color: #b00020; font-weight: 700; }
+    
+    .section { 
+      margin: 14px 0; 
+      padding: 14px; 
+      background: var(--panel);
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .character-info { 
+      padding: 14px; 
+      background: linear-gradient(180deg, #e9f6ff 0%, #f6fbff 100%);
+      border-radius: var(--radius);
+      margin: 12px 0; 
+      font-size: 14px;
+      border: 1px solid rgba(47,84,235,0.15);
+      box-shadow: 0 6px 18px rgba(24,144,255,0.08);
+    }
+    
+    .loading { 
+      display: inline-block; 
+      width: 16px; 
+      height: 16px; 
+      border: 2px solid #f3f3f3; 
+      border-top: 2px solid #2f54eb; 
+      border-radius: 50%; 
+      animation: spin 1s linear infinite; 
+    }
+    
+    @keyframes spin { 
+      0% { transform: rotate(0deg); } 
+      100% { transform: rotate(360deg); } 
+    }
+    
+    /* 右侧内容区域 */
+    .step-content {
+      display: none;
+    }
+    
+    .step-content.active {
+      display: block;
+    }
+    
+    .step-header {
+      margin-bottom: 14px;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.8);
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .step-header h2 {
+      color: var(--brand);
+      margin: 0 0 8px 0;
+      font-size: 20px;
+    }
+    
+    .step-info {
+      color: #666;
+      font-size: 14px;
+      margin: 8px 0;
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 16px;
+      margin: 14px 0;
+      align-items: stretch;
+    }
+    
+    .content-box {
+      background: rgba(255,255,255,0.85);
+      border-radius: var(--radius);
+      padding: 14px;
+      border: 1px solid var(--stroke);
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+    
+    .content-box h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--brand);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    /* 固定歌词区域高度（可滚动），更适合儿童阅读 */
+    .lyrics-box {
+      background: linear-gradient(180deg, #f6fbff 0%, #ffffff 100%);
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px dashed rgba(47,84,235,0.25);
+      white-space: pre-wrap;
+      font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans";
+      font-size: 18px;
+      line-height: 1.9;
+      overflow-y: auto;
+      height: 928px; /* 与图片一致：全高度展示歌词 */
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+    }
+    
+    /* 固定图片区域高度与比例（16:9），避免跳动 */
+    .image-box {
+      width: 100%;
+      height: 928px; /* 原图高度：全尺寸展示 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto; /* 允许滚动，展示原图全尺寸 */
+      background: linear-gradient(180deg, #fff8ee 0%, #ffffff 100%);
+      border-radius: 14px;
+      border: 1px solid rgba(250,140,22,0.18);
+      position: relative;
+    }
+    
+    /* 原图为 1664x928：这里按原始像素渲染，容器不足则滚动查看 */
+    .image-box img {
+      width: 1664px;
+      height: 928px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(31,42,68,0.12);
+      max-width: none;
+      max-height: none;
+    }
+    
+    .audio-box {
+      min-height: 50px;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 8px 0;
+    }
+    
+    .audio-controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    
+    .audio-control-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: #2f54eb;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    
+    .audio-control-btn:hover {
+      background: #1d39c4;
+    }
+    
+    .audio-control-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .audio-control-btn.pause {
+      background: #fa8c16;
+    }
+    
+    .audio-control-btn.pause:hover {
+      background: #d46b08;
+    }
+    
+    .audio-control-btn.restart {
+      background: #52c41a;
+    }
+    
+    .audio-control-btn.restart:hover {
+      background: #389e0d;
+    }
+    
+    .audio-progress-container {
+      flex: 1;
+      margin: 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .audio-progress-bar {
+      flex: 1;
+      height: 20px;
+      background: #e8e8e8;
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      overflow: visible;
+      display: flex;
+      align-items: center;
+    }
+    
+    .audio-progress-fill {
+      height: 6px;
+      background: #2f54eb;
+      border-radius: 3px;
+      transition: width 0.1s linear;
+      position: relative;
+    }
+    
+    .audio-progress-thumb {
+      width: 14px;
+      height: 14px;
+      background: #2f54eb;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      cursor: grab;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: transform 0.1s;
+    }
+    
+    .audio-progress-thumb:hover {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+    
+    .audio-progress-thumb:active {
+      cursor: grabbing;
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+    
+    .audio-time {
+      font-size: 12px;
+      color: #666;
+      min-width: 80px;
+      text-align: center;
+      font-family: monospace;
+    }
+    
+    .audio-hidden {
+      display: none;
+    }
+    
+    /* 下载按钮样式 */
+    .download-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(180deg, #4d72ff 0%, var(--brand) 100%);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(47,84,235,0.3);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+    
+    .download-btn:hover {
+      background: linear-gradient(180deg, #6b8aff 0%, #4d72ff 100%);
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(47,84,235,0.4);
+    }
+    
+    .download-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .download-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    /* 总下载按钮 - 在歌词下方 */
+    .download-all-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(180deg, #4d72ff 0%, var(--brand) 100%);
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(47,84,235,0.3);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+    
+    .download-all-btn:hover {
+      background: linear-gradient(180deg, #6b8aff 0%, #4d72ff 100%);
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(47,84,235,0.4);
+    }
+    
+    .download-all-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .download-all-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .download-all-btn.show {
+      display: flex;
+    }
+    
+    /* 历史记录按钮样式 */
+    .history-btn {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(180deg, #4d72ff 0%, var(--brand) 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(47,84,235,0.3);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .history-btn:hover {
+      background: linear-gradient(180deg, #6b8aff 0%, #4d72ff 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(47,84,235,0.4);
+    }
+    
+    .history-btn:active {
+      transform: translateY(0);
+    }
+    
+    /* 历史记录模态框样式 */
+    .history-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    
+    .history-modal.active {
+      display: flex;
+    }
+    
+    .history-modal-content {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    
+    .history-close-btn {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+    
+    .history-close-btn:hover {
+      background: var(--panel-2);
+      color: var(--text);
+    }
+    
+    .history-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 300px;
+    }
+    
+    .history-item {
+      padding: 14px 16px;
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      background: var(--panel);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+    
+    .history-item:hover {
+      border-color: var(--brand);
+      box-shadow: 0 4px 12px rgba(47,84,235,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .history-item-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .history-item-meta-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    
+    .history-item-title {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+    
+    .history-item-meta {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .history-item-btn {
+      padding: 4px 8px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--brand);
+      color: white;
+      white-space: nowrap;
+      width: 56px;
+      min-width: 56px;
+      max-width: 56px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .history-item-btn:hover {
+      background: #1d39c4;
+      transform: translateY(-1px);
+    }
+    
+    .history-item-btn:active {
+      transform: translateY(0);
+    }
+    
+    .history-empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+    
+    .history-loading {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+    
+    .history-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 12px 0;
+      border-top: 1px solid var(--stroke);
+    }
+    
+    .history-page-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      background: white;
+      color: var(--text);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    
+    .history-page-btn:hover:not(:disabled) {
+      border-color: var(--brand);
+      background: var(--panel-2);
+      color: var(--brand);
+    }
+    
+    .history-page-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    
+    .history-page-info {
+      font-size: 14px;
+      color: var(--muted);
+      min-width: 60px;
+      text-align: center;
+    }
+    
+    /* 积木拼接动画 */
+    .building-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .building-animation.hidden {
+      display: none;
+    }
+    
+    .building-title {
+      font-size: 24px;
+      color: #2f54eb;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+    
+    .blocks-container {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    
+    .building-block {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      animation: buildUp 0.6s ease-out forwards, floatAnimation 2s ease-in-out infinite;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    
+    .building-block:nth-child(1) {
+      background: #ff6b6b;
+      animation-delay: 0.1s, 0.7s;
+      height: 60px;
+    }
+    
+    .building-block:nth-child(2) {
+      background: #4ecdc4;
+      animation-delay: 0.2s, 0.8s;
+      height: 80px;
+    }
+    
+    .building-block:nth-child(3) {
+      background: #ffe66d;
+      animation-delay: 0.3s, 0.9s;
+      height: 100px;
+    }
+    
+    .building-block:nth-child(4) {
+      background: #95e1d3;
+      animation-delay: 0.4s, 1.0s;
+      height: 80px;
+    }
+    
+    .building-block:nth-child(5) {
+      background: #f38181;
+      animation-delay: 0.5s, 1.1s;
+      height: 60px;
+    }
+    
+    @keyframes buildUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+      }
+      50% {
+        transform: translateY(-10px) scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes floatAnimation {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      25% {
+        transform: translateY(-15px) rotate(2deg);
+      }
+      50% {
+        transform: translateY(-5px) rotate(0deg);
+      }
+      75% {
+        transform: translateY(-20px) rotate(-2deg);
+      }
+    }
+    
+    /* 积木拼接效果 - 持续循环 */
+    @keyframes connectAnimation {
+      0%, 100% {
+        transform: translateX(0) scale(1);
+      }
+      50% {
+        transform: translateX(5px) scale(1.05);
+      }
+    }
+    
+    .blocks-container {
+      animation: connectAnimation 3s ease-in-out infinite;
+    }
+    
+    .building-status {
+      margin-top: 30px;
+      font-size: 16px;
+      color: #666;
+    }
+    
+    /* 小型积木动画（用于歌词和图片区域） */
+    .mini-building-animation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      padding: 20px;
+    }
+    
+    .mini-blocks-container {
+      display: flex;
+      gap: 6px;
+      align-items: flex-end;
+    }
+    
+    .mini-building-block {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      animation: miniBuildUp 0.6s ease-out forwards, miniFloatAnimation 2s ease-in-out infinite;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    .mini-building-block:nth-child(1) {
+      background: #ff6b6b;
+      animation-delay: 0.1s, 0.7s;
+      height: 30px;
+    }
+    
+    .mini-building-block:nth-child(2) {
+      background: #4ecdc4;
+      animation-delay: 0.2s, 0.8s;
+      height: 40px;
+    }
+    
+    .mini-building-block:nth-child(3) {
+      background: #ffe66d;
+      animation-delay: 0.3s, 0.9s;
+      height: 50px;
+    }
+    
+    .mini-building-block:nth-child(4) {
+      background: #95e1d3;
+      animation-delay: 0.4s, 1.0s;
+      height: 40px;
+    }
+    
+    .mini-building-block:nth-child(5) {
+      background: #f38181;
+      animation-delay: 0.5s, 1.1s;
+      height: 30px;
+    }
+    
+    @keyframes miniBuildUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+      }
+      50% {
+        transform: translateY(-5px) scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes miniFloatAnimation {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      25% {
+        transform: translateY(-8px) rotate(2deg);
+      }
+      50% {
+        transform: translateY(-3px) rotate(0deg);
+      }
+      75% {
+        transform: translateY(-10px) rotate(-2deg);
+      }
+    }
+    
+    .mini-blocks-container {
+      animation: miniConnectAnimation 3s ease-in-out infinite;
+    }
+    
+    @keyframes miniConnectAnimation {
+      0%, 100% {
+        transform: translateX(0) scale(1);
+      }
+      50% {
+        transform: translateX(3px) scale(1.05);
+      }
+    }
+    
+    .status-message {
+      padding: 12px;
+      border-radius: 4px;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    
+    .status-message.info {
+      background: #e6f7ff;
+      color: #1890ff;
+    }
+    
+    .status-message.success {
+      background: #f6ffed;
+      color: #52c41a;
+    }
+    
+    .status-message.error {
+      background: #fff2e8;
+      color: #fa8c16;
+    }
+    
+    .progress-indicator {
+      margin: 16px 0;
+      padding: 12px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    
+    .step-indicator {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+    
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      border: 2px solid #ddd;
+      background: white;
+      color: #666;
+    }
+    
+    .step-dot.active {
+      background: #2f54eb;
+      color: white;
+      border-color: #2f54eb;
+    }
+    
+    .step-dot.completed {
+      background: #52c41a;
+      color: white;
+      border-color: #52c41a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 左侧面板 - 20% -->
+    <div class="left-panel">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding: 10px 12px; border-radius: 16px; background: rgba(255,255,255,0.8); border: 1px solid var(--stroke); box-shadow: var(--shadow-soft);">
+        <img src="yinhuixing.png" alt="音绘星" style="width: 44px; height: 44px; object-fit: contain;" />
+        <div>
+          <h1 style="margin: 0; font-size: 22px; color: var(--brand);">音绘星</h1>
+          <div class="muted" style="font-size: 12px; margin-top: 2px;">3-6岁儿童认知学习</div>
+      </div>
+      </div>
+
+      <div class="section">
+        <h2 style="font-size: 16px; margin-top: 0;">📝 设置学习目标</h2>
+        <div class="muted" style="margin-top: 6px;">适合3-6岁儿童 · 色彩温柔 · 操作简单</div>
+        
+        <label>学习目标</label>
+        <input id="userGoal" placeholder="例如：认识钟表" value="认识钟表" />
+
+        <label>目标重点</label>
+        <textarea id="learningFocus" placeholder="例如：让孩子学会认识时针和分针，理解时间的概念" rows="3"></textarea>
+
+        <label>音乐风格</label>
+        <select id="musicStyle">
+          <option value="欢快" selected>欢快</option>
+          <option value="温暖">温暖</option>
+          <option value="舒缓">舒缓</option>
+          <option value="童话">童话</option>
+          <option value="custom">自定义输入</option>
+        </select>
+        <input id="musicStyleCustom" placeholder="请输入自定义音乐风格" style="display: none; margin-top: 6px;" />
+
+        <label>音乐声音</label>
+        <select id="musicVoice">
+          <option value="男生" selected>男生</option>
+          <option value="女生">女生</option>
+          <option value="爸爸">爸爸</option>
+          <option value="妈妈">妈妈</option>
+          <option value="custom">自定义输入</option>
+        </select>
+        <input id="musicVoiceCustom" placeholder="请输入自定义声音类型" style="display: none; margin-top: 6px;" />
+
+        <label>绘本风格</label>
+        <select id="pictureBookStyle">
+          <option value="童话" selected>童话</option>
+          <option value="可爱">可爱</option>
+          <option value="科幻">科幻</option>
+          <option value="童年">童年</option>
+          <option value="custom">自定义输入</option>
+        </select>
+        <input id="pictureBookStyleCustom" placeholder="请输入自定义绘本风格" style="display: none; margin-top: 6px;" />
+
+        <label>角色选择</label>
+        <select id="characterType">
+          <option value="男生" selected>男生</option>
+          <option value="女生">女生</option>
+          <option value="爸爸">爸爸</option>
+          <option value="妈妈">妈妈</option>
+          <option value="动物">动物</option>
+          <option value="custom">自定义输入</option>
+        </select>
+        <input id="characterTypeCustom" placeholder="请输入自定义角色类型" style="display: none; margin-top: 6px;" />
+
+        <button id="btnDecompose">🔍 分解学习目标</button>
+        <div id="decomposeStatus" class="muted" style="margin-top: 8px; font-size: 12px;"></div>
+      </div>
+
+      <div id="characterInfo" class="character-info" style="display: none;">
+        <strong>🎭 角色信息</strong>
+        <div id="characterDetails" style="margin-top: 8px;"></div>
+      </div>
+
+      <div class="section" style="margin-top: 16px;">
+        <button id="btnHistory" class="history-btn" onclick="showHistoryModal()">
+          📚 历史生成
+        </button>
+      </div>
+
+      <!-- 历史记录模态框 -->
+      <div id="historyModal" class="history-modal">
+        <div class="history-modal-content">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 style="margin: 0; font-size: 18px; color: var(--brand);">📚 历史生成记录</h2>
+            <button class="history-close-btn" onclick="hideHistoryModal()" title="关闭">×</button>
+          </div>
+          <div class="history-container">
+            <div id="historyList" class="history-list">
+              <div class="history-loading">正在加载历史记录...</div>
+            </div>
+            <div class="history-pagination" id="historyPagination" style="display: none;">
+              <button class="history-page-btn" id="historyPrevBtn" onclick="historyPrevPage()">◀</button>
+              <span class="history-page-info" id="historyPageInfo">1 / 1</span>
+              <button class="history-page-btn" id="historyNextBtn" onclick="historyNextPage()">▶</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="stepsSection" style="display: none;">
+        <div class="section">
+          <h2 style="font-size: 16px; margin-top: 0;">📚 学习步骤</h2>
+          <div id="stepIndicator" class="step-indicator"></div>
+          
+          <div class="nav-buttons">
+            <button id="btnPrev" class="btn-prev" disabled>◀ 上一步</button>
+            <button id="btnNext" class="btn-next" disabled>下一步 ▶</button>
+          </div>
+          
+          <button id="btnRegenerate" class="btn-regenerate" disabled>🔄 重新生成</button>
+          <button id="btnGenerateAll" style="display: none; background: #722ed1; margin-top: 8px;">⚡ 一次性生成所有内容</button>
+          
+          <div id="generateStatus" class="muted" style="margin-top: 8px; font-size: 12px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右侧面板 - 80% -->
+    <div class="right-panel">
+      <div id="welcomeMessage" style="text-align: center; padding: 100px 20px; color: #999;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px;">
+          <img src="yinhuixing.png" alt="音绘星" style="width: 80px; height: 80px; object-fit: contain;" />
+          <h2 style="margin: 0; font-size: 32px; color: #2f54eb;">音绘星</h2>
+        </div>
+        <p style="font-size: 16px; margin-top: 10px;">欢迎使用认知能力结构化提升系统</p>
+        <p style="font-size: 14px; margin-top: 8px;">请在左侧设置学习目标并开始分解</p>
+      </div>
+
+      <div id="stepsContainer" style="display: none;">
+        <!-- 步骤内容将通过JavaScript动态生成 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 积木拼接动画 -->
+  <div id="buildingAnimation" class="building-animation hidden">
+    <div class="building-title">🎵 正在构建学习方案...</div>
+    <div class="blocks-container">
+      <div class="building-block"></div>
+      <div class="building-block"></div>
+      <div class="building-block"></div>
+      <div class="building-block"></div>
+      <div class="building-block"></div>
+    </div>
+    <div class="building-status" id="buildingStatus">准备开始...</div>
+  </div>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  
+  // 全局变量
+  let decomposedData = null;
+  let currentStepIndex = 0;
+  let stepContents = []; // 存储所有步骤的内容缓存
+  let isGeneratingAll = false;
+  let currentSessionId = null; // 当前会话ID，用于保存文件
+  let historyData = []; // 历史记录数据
+  let historyCurrentPage = 1; // 当前历史记录页码
+  const historyPageSize = 5; // 每页显示的历史记录数量
+
+  // 处理自定义输入显示/隐藏
+  function setupCustomInputs() {
+    // 音乐风格自定义
+    $('musicStyle').addEventListener('change', function() {
+      $('musicStyleCustom').style.display = this.value === 'custom' ? 'block' : 'none';
+      if (this.value !== 'custom') {
+        $('musicStyleCustom').value = '';
+      }
+    });
+
+    // 音乐声音自定义
+    $('musicVoice').addEventListener('change', function() {
+      $('musicVoiceCustom').style.display = this.value === 'custom' ? 'block' : 'none';
+      if (this.value !== 'custom') {
+        $('musicVoiceCustom').value = '';
+      }
+    });
+
+    // 绘本风格自定义
+    $('pictureBookStyle').addEventListener('change', function() {
+      $('pictureBookStyleCustom').style.display = this.value === 'custom' ? 'block' : 'none';
+      if (this.value !== 'custom') {
+        $('pictureBookStyleCustom').value = '';
+      }
+    });
+
+    // 角色选择自定义
+    $('characterType').addEventListener('change', function() {
+      $('characterTypeCustom').style.display = this.value === 'custom' ? 'block' : 'none';
+      if (this.value !== 'custom') {
+        $('characterTypeCustom').value = '';
+      }
+    });
+  }
+
+  // 获取实际的值（处理自定义输入）
+  function getActualValue(selectId, customInputId) {
+    const select = $(selectId);
+    const customInput = $(customInputId);
+    if (select.value === 'custom' && customInput.value.trim()) {
+      return customInput.value.trim();
+    }
+    return select.value;
+  }
+
+  // 分解用户目标
+  async function decomposeGoal() {
+    const userGoal = $('userGoal').value.trim();
+    const learningFocus = $('learningFocus').value.trim();
+    const musicStyle = getActualValue('musicStyle', 'musicStyleCustom');
+    const musicVoice = getActualValue('musicVoice', 'musicVoiceCustom');
+    const pictureBookStyle = getActualValue('pictureBookStyle', 'pictureBookStyleCustom');
+    const characterType = getActualValue('characterType', 'characterTypeCustom');
+    const decomposeStatusEl = $('decomposeStatus');
+
+    if (!userGoal) {
+      decomposeStatusEl.className = 'err';
+      decomposeStatusEl.textContent = '请输入学习目标';
+      return;
+    }
+
+    decomposeStatusEl.className = 'muted';
+    decomposeStatusEl.innerHTML = '<span class="loading"></span> 正在分解...';
+    $('btnDecompose').disabled = true;
+
+    // 显示积木拼接动画
+    const buildingAnim = $('buildingAnimation');
+    const buildingStatus = $('buildingStatus');
+    buildingAnim.classList.remove('hidden');
+    buildingStatus.textContent = '正在分析学习目标...';
+
+    try {
+      // 模拟积木拼接过程
+      setTimeout(() => {
+        buildingStatus.textContent = '正在分解学习步骤...';
+      }, 1000);
+
+      console.log('Sending decompose request:', { userGoal, learningFocus, musicStyle, musicVoice, pictureBookStyle, characterType });
+      
+      const resp = await fetch('/api/decompose-prompt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          userGoal, 
+          learningFocus, 
+          musicStyle, 
+          musicVoice, 
+          pictureBookStyle, 
+          characterType 
+        }),
+      }).catch(err => {
+        console.error('Fetch error:', err);
+        throw new Error(`网络请求失败: ${err.message || '无法连接到服务器，请确保服务器正在运行'}`);
+      });
+
+      console.log('Response status:', resp.status, resp.statusText);
+
+      const data = await resp.json().catch(() => {
+        console.error('Failed to parse JSON response');
+        return { error: '服务器返回了无效的响应格式' };
+      });
+
+      if (!resp.ok) {
+        console.error('Response error:', data);
+        throw new Error(data?.error || `HTTP ${resp.status}: ${resp.statusText}`);
+      }
+
+      decomposedData = data.result;
+      currentStepIndex = 0;
+      stepContents = [];
+      currentSessionId = null; // 重置会话ID，新的分解会创建新的会话
+
+      // 更新动画状态
+      buildingStatus.textContent = '正在构建学习方案...';
+
+      // 显示角色信息
+      if (decomposedData.character_name) {
+        $('characterInfo').style.display = 'block';
+
+        const cs = decomposedData.character_sheet;
+        const csText = cs && cs.reference_prompt ? cs.reference_prompt : '';
+
+        $('characterDetails').innerHTML = `
+          <div><strong>角色：</strong>${decomposedData.character_name}</div>
+          <div style="margin-top: 4px;"><strong>描述：</strong>${decomposedData.character_description || '可爱的学习伙伴'}</div>
+          ${csText ? `<div style="margin-top: 8px;"><strong>设定卡：</strong>${csText}</div>` : ''}
+        `;
+      }
+
+      // 显示步骤区域
+      if (decomposedData.steps && decomposedData.steps.length > 0) {
+        buildingStatus.textContent = '完成！进入学习步骤...';
+        
+        // 延迟一下，让用户看到完成状态
+        setTimeout(() => {
+          // 隐藏动画
+          buildingAnim.classList.add('hidden');
+          
+          $('stepsSection').style.display = 'block';
+          $('welcomeMessage').style.display = 'none';
+          $('stepsContainer').style.display = 'block';
+          
+          renderStepIndicator();
+          renderStepContents();
+          showCurrentStep();
+          updateNavigationButtons();
+          
+          // 自动开始生成所有内容
+          setTimeout(() => {
+            generateAllSteps();
+          }, 1000);
+        }, 800);
+      } else {
+        buildingAnim.classList.add('hidden');
+      }
+
+      decomposeStatusEl.className = 'ok';
+      decomposeStatusEl.textContent = '✅ 分解完成！';
+    } catch (e) {
+      console.error('Decompose error:', e);
+      buildingAnim.classList.add('hidden');
+      decomposeStatusEl.className = 'err';
+      const errorMsg = e?.message || String(e) || '未知错误';
+      decomposeStatusEl.textContent = '分解失败：' + errorMsg;
+      
+      // 如果是网络错误，提供更友好的提示
+      if (errorMsg.includes('Failed to fetch') || errorMsg.includes('网络请求失败')) {
+        decomposeStatusEl.textContent = '分解失败：无法连接到服务器。请确保服务器正在运行（node server.js）';
+      }
+    } finally {
+      $('btnDecompose').disabled = false;
+    }
+  }
+
+  // 渲染步骤指示器
+  function renderStepIndicator() {
+    const indicatorEl = $('stepIndicator');
+    indicatorEl.innerHTML = '';
+    
+    decomposedData.steps.forEach((step, index) => {
+      const dot = document.createElement('div');
+      dot.className = 'step-dot';
+      dot.textContent = index + 1;
+      dot.id = `stepDot${index}`;
+      indicatorEl.appendChild(dot);
+    });
+  }
+
+  // 渲染所有步骤内容区域
+  function renderStepContents() {
+    const containerEl = $('stepsContainer');
+    containerEl.innerHTML = '';
+
+    decomposedData.steps.forEach((step, index) => {
+      const stepEl = document.createElement('div');
+      stepEl.className = 'step-content';
+      stepEl.id = `stepContent${index}`;
+      
+      stepEl.innerHTML = `
+        <div class="step-header">
+          <h2 style="margin: 0;">步骤 ${step.step_number || (index + 1)}：${step.step_name}</h2>
+          <div class="step-info">
+            <div><strong>描述：</strong>${step.step_description}</div>
+            <div style="margin-top: 8px;"><strong>学习目标：</strong>${step.learning_objective}</div>
+          </div>
+        </div>
+        
+        <div id="stepResult${index}" class="content-grid">
+          <div class="content-box">
+            <h3>📝 歌词</h3>
+            <div id="stepLyrics${index}" class="lyrics-box">等待生成...</div>
+            <button class="download-btn" id="downloadLyricsBtn${index}" onclick="downloadLyrics(${index})" title="下载歌词" style="display: none;">🖋️</button>
+            <button class="download-all-btn" id="downloadAllBtn${index}" onclick="downloadAllStepContent(${index})" title="下载全部" style="display: none;">🖋️</button>
+          </div>
+          
+          <div class="content-box">
+            <h3>🖼️ 图片</h3>
+            <div id="stepImage${index}" class="image-box" style="text-align: center; color: #999;">
+              等待生成...
+            </div>
+            <button class="download-btn" id="downloadImageBtn${index}" onclick="downloadImage(${index})" title="下载图片" style="display: none;">🖋️</button>
+          </div>
+        </div>
+        
+        <div class="content-box" style="margin-top: 20px; min-height: 80px; padding: 16px; position: relative;">
+          <h3 style="margin: 0 0 12px 0; font-size: 16px;">🎵 音乐</h3>
+          <div id="stepAudio${index}" class="audio-box" style="text-align: center; color: #999;">
+            等待生成...
+          </div>
+          <button class="download-btn" id="downloadAudioBtn${index}" onclick="downloadAudio(${index})" title="下载音频" style="display: none;">🖋️</button>
+        </div>
+        
+      `;
+      
+      containerEl.appendChild(stepEl);
+    });
+  }
+
+  // 图片预加载缓存（减少切换步骤时的等待）
+  const imagePreloadCache = new Map(); // url -> Promise
+
+  function preloadImage(url) {
+    if (!url) return Promise.resolve(false);
+    if (imagePreloadCache.has(url)) return imagePreloadCache.get(url);
+
+    const p = new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+      // 避免某些 CDN 因缓存策略导致重复下载，显式设置 crossOrigin 不影响加载
+      img.src = url;
+    });
+
+    imagePreloadCache.set(url, p);
+    return p;
+  }
+
+  // 显示当前步骤
+  function showCurrentStep() {
+    // 预加载：当前 + 下一步（如果有）
+    const content = stepContents[currentStepIndex];
+    if (content?.imageUrl) preloadImage(content.imageUrl);
+
+    const nextContent = stepContents[currentStepIndex + 1];
+    if (nextContent?.imageUrl) preloadImage(nextContent.imageUrl);
+
+    // 隐藏所有步骤
+    decomposedData.steps.forEach((step, index) => {
+      const stepEl = $(`stepContent${index}`);
+      if (stepEl) {
+        stepEl.classList.remove('active');
+      }
+      
+      // 更新步骤指示器
+      const dotEl = $(`stepDot${index}`);
+      if (dotEl) {
+        dotEl.classList.remove('active', 'completed');
+        if (index < currentStepIndex) {
+          dotEl.classList.add('completed');
+        } else if (index === currentStepIndex) {
+          dotEl.classList.add('active');
+        }
+      }
+    });
+    
+    // 显示当前步骤
+    const currentStepEl = $(`stepContent${currentStepIndex}`);
+    if (currentStepEl) {
+      currentStepEl.classList.add('active');
+      
+      // 如果已生成内容，显示缓存的内容
+      if (stepContents[currentStepIndex]) {
+        displayStepContent(currentStepIndex);
+      } else {
+        // 如果当前步骤没有内容，隐藏下载全部按钮
+        const downloadAllBtn = $(`downloadAllBtn${currentStepIndex}`);
+        if (downloadAllBtn) {
+          downloadAllBtn.style.display = 'none';
+        }
+      }
+    }
+  }
+
+  // 清理歌词内容，移除Suno格式标记
+  function cleanLyrics(lyrics) {
+    if (!lyrics) return '';
+    
+    // 移除 [Suno Style: ...] 格式的标记
+    lyrics = lyrics.replace(/\[Suno Style:.*?\]/gi, '');
+    
+    // 移除 [Intro]、[Outro]、[Bridge] 等标记及其内容
+    lyrics = lyrics.replace(/\[Intro\].*?(\[Verse\]|\[Chorus\])/gis, '$1');
+    lyrics = lyrics.replace(/\[Outro\].*?$/gis, '');
+    lyrics = lyrics.replace(/\[Bridge\].*?(\[Verse\]|\[Chorus\])/gis, '$1');
+    
+    // 移除其他格式说明，如 (BPM 80)、Tempo等
+    lyrics = lyrics.replace(/\(BPM\s+\d+\)/gi, '');
+    lyrics = lyrics.replace(/Tempo:.*/gi, '');
+    lyrics = lyrics.replace(/节奏:.*/gi, '');
+    
+    // 移除多余的空白行
+    lyrics = lyrics.replace(/\n{3,}/g, '\n\n');
+    
+    // 移除行首行尾空白
+    lyrics = lyrics.trim();
+    
+    return lyrics;
+  }
+
+  // 显示步骤内容
+  // 生成小型积木动画 HTML
+  function getMiniBuildingAnimationHTML() {
+    return `
+      <div class="mini-building-animation">
+        <div class="mini-blocks-container">
+          <div class="mini-building-block"></div>
+          <div class="mini-building-block"></div>
+          <div class="mini-building-block"></div>
+          <div class="mini-building-block"></div>
+          <div class="mini-building-block"></div>
+        </div>
+      </div>
+    `;
+  }
+  
+  // 检查内容是否完全生成
+  function isContentFullyGenerated(content) {
+    if (!content) return false;
+    // 检查歌词、图片、音乐是否都有结果（成功或失败都算有结果）
+    const hasLyrics = content.lyrics || content.lyricsError;
+    const hasImage = content.imageUrl || content.imageError;
+    const hasAudio = content.audioUrl || content.audioError;
+    return hasLyrics && hasImage && hasAudio;
+  }
+
+  function displayStepContent(stepIndex) {
+    const content = stepContents[stepIndex];
+    const lyricsEl = $(`stepLyrics${stepIndex}`);
+    const imageEl = $(`stepImage${stepIndex}`);
+    const audioEl = $(`stepAudio${stepIndex}`);
+    
+    // 检查内容是否完全生成
+    const isFullyGenerated = isContentFullyGenerated(content);
+    
+    if (!content || !isFullyGenerated) {
+      // 如果内容未完全生成，在歌词和图片区域显示积木动画
+      if (lyricsEl) {
+        lyricsEl.innerHTML = getMiniBuildingAnimationHTML();
+      }
+      if (imageEl) {
+        imageEl.innerHTML = getMiniBuildingAnimationHTML();
+      }
+      // 音乐区域在生成时不显示任何内容（保持空白）
+      if (audioEl) {
+        audioEl.innerHTML = '';
+      }
+      return;
+    }
+
+    // 显示歌词（清理格式标记）
+    if (lyricsEl) {
+      if (content.lyrics) {
+        const cleanedLyrics = cleanLyrics(content.lyrics);
+        lyricsEl.textContent = cleanedLyrics;
+        lyricsEl.style.color = '#333';
+        // 显示下载按钮
+        const downloadBtn = $(`downloadLyricsBtn${stepIndex}`);
+        if (downloadBtn) {
+          downloadBtn.style.display = 'flex';
+          downloadBtn.disabled = false;
+        }
+      } else if (content.lyricsError) {
+        lyricsEl.textContent = `歌词生成失败：${content.lyricsError}`;
+        lyricsEl.style.color = '#b00020';
+        // 隐藏下载按钮
+        const downloadBtn = $(`downloadLyricsBtn${stepIndex}`);
+        if (downloadBtn) downloadBtn.style.display = 'none';
+      } else {
+        lyricsEl.textContent = '等待生成...';
+        lyricsEl.style.color = '#999';
+        // 隐藏下载按钮
+        const downloadBtn = $(`downloadLyricsBtn${stepIndex}`);
+        if (downloadBtn) downloadBtn.style.display = 'none';
+      }
+    }
+
+    // 显示图片
+    if (imageEl) {
+      if (content.imageUrl) {
+        // 优先渲染占位，等待图片 onload 后再显示，减少切步时的空白时间
+        imageEl.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">${getMiniBuildingAnimationHTML()}</div>`;
+        const img = new Image();
+        img.onload = () => {
+          imageEl.innerHTML = `<img src="${content.imageUrl}" alt="步骤 ${stepIndex + 1} 图片" />`;
+          // 显示下载按钮
+          const downloadBtn = $(`downloadImageBtn${stepIndex}`);
+          if (downloadBtn) {
+            downloadBtn.style.display = 'flex';
+            downloadBtn.disabled = false;
+          }
+        };
+        img.onerror = () => {
+          imageEl.innerHTML = `<div style="text-align: center; padding: 20px; color: #b00020; display: flex; align-items: center; justify-content: center; height: 100%;">图片加载失败</div>`;
+          // 隐藏下载按钮
+          const downloadBtn = $(`downloadImageBtn${stepIndex}`);
+          if (downloadBtn) downloadBtn.style.display = 'none';
+        };
+        img.src = content.imageUrl;
+      } else if (content.imageError) {
+        imageEl.innerHTML = `<div style="text-align: center; padding: 20px; color: #b00020; display: flex; align-items: center; justify-content: center; height: 100%;">图片生成失败：${content.imageError}</div>`;
+        // 隐藏下载按钮
+        const downloadBtn = $(`downloadImageBtn${stepIndex}`);
+        if (downloadBtn) downloadBtn.style.display = 'none';
+      } else {
+        imageEl.innerHTML = '<div style="text-align: center; padding: 20px; color: #999; display: flex; align-items: center; justify-content: center; height: 100%;">等待生成...</div>';
+        // 隐藏下载按钮
+        const downloadBtn = $(`downloadImageBtn${stepIndex}`);
+        if (downloadBtn) downloadBtn.style.display = 'none';
+      }
+    }
+
+    // 显示音乐
+    if (audioEl) {
+      if (content.audioUrl) {
+        // 创建隐藏的audio元素
+        const audioId = `hiddenAudio${stepIndex}`;
+        let hiddenAudio = document.getElementById(audioId);
+        if (!hiddenAudio) {
+          hiddenAudio = document.createElement('audio');
+          hiddenAudio.id = audioId;
+          hiddenAudio.className = 'audio-hidden';
+          hiddenAudio.src = content.audioUrl;
+          document.body.appendChild(hiddenAudio);
+        } else {
+          hiddenAudio.src = content.audioUrl;
+        }
+        
+        // 创建控制按钮和进度条
+        audioEl.innerHTML = `
+          <div class="audio-controls">
+            <button class="audio-control-btn play-btn" onclick="togglePlayPause(${stepIndex})" id="playBtn${stepIndex}">▶</button>
+            <button class="audio-control-btn restart" onclick="restartAudio(${stepIndex})" id="restartBtn${stepIndex}">⏮</button>
+            <div class="audio-progress-container">
+              <div class="audio-progress-bar" id="progressBar${stepIndex}">
+                <div class="audio-progress-fill" id="progressFill${stepIndex}" style="width: 0%;">
+                  <div class="audio-progress-thumb" id="progressThumb${stepIndex}"></div>
+                </div>
+              </div>
+              <div class="audio-time" id="audioTime${stepIndex}">0:00 / 0:00</div>
+            </div>
+          </div>
+        `;
+        
+        // 格式化时间
+        function formatTime(seconds) {
+          if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
+          const mins = Math.floor(seconds / 60);
+          const secs = Math.floor(seconds % 60);
+          return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // 拖拽状态
+        let isDragging = false;
+        let isUserSeeking = false;
+        
+        // 更新进度条
+        function updateProgress() {
+          if (isDragging || isUserSeeking) return; // 拖拽时不自动更新
+          
+          const progressFill = $(`progressFill${stepIndex}`);
+          const audioTime = $(`audioTime${stepIndex}`);
+          if (!hiddenAudio || !progressFill || !audioTime) return;
+          
+          if (hiddenAudio.duration && hiddenAudio.duration > 0) {
+            const percent = (hiddenAudio.currentTime / hiddenAudio.duration) * 100;
+            progressFill.style.width = percent + '%';
+            audioTime.textContent = `${formatTime(hiddenAudio.currentTime)} / ${formatTime(hiddenAudio.duration)}`;
+          } else {
+            audioTime.textContent = `0:00 / 0:00`;
+          }
+        }
+        
+        // 设置进度条位置
+        function setProgress(percent) {
+          const progressFill = $(`progressFill${stepIndex}`);
+          if (!progressFill || !hiddenAudio || !hiddenAudio.duration) return;
+          
+          percent = Math.max(0, Math.min(100, percent));
+          progressFill.style.width = percent + '%';
+          
+          if (hiddenAudio.duration > 0) {
+            hiddenAudio.currentTime = (percent / 100) * hiddenAudio.duration;
+            const audioTime = $(`audioTime${stepIndex}`);
+            if (audioTime) {
+              audioTime.textContent = `${formatTime(hiddenAudio.currentTime)} / ${formatTime(hiddenAudio.duration)}`;
+            }
+          }
+        }
+        
+        // 获取点击位置对应的百分比
+        function getPercentFromEvent(event) {
+          const progressBar = $(`progressBar${stepIndex}`);
+          if (!progressBar) return 0;
+          
+          const rect = progressBar.getBoundingClientRect();
+          const clickX = event.clientX - rect.left;
+          const percent = (clickX / rect.width) * 100;
+          return Math.max(0, Math.min(100, percent));
+        }
+        
+        // 进度条点击和拖拽事件
+        const progressBar = $(`progressBar${stepIndex}`);
+        if (progressBar) {
+          // 点击跳转
+          progressBar.addEventListener('click', (e) => {
+            if (!isDragging) {
+              const percent = getPercentFromEvent(e);
+              setProgress(percent);
+            }
+          });
+          
+          // 拖拽开始
+          progressBar.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            isUserSeeking = true;
+            const percent = getPercentFromEvent(e);
+            setProgress(percent);
+          });
+          
+          // 拖拽中
+          const handleMouseMove = (e) => {
+            if (isDragging) {
+              const percent = getPercentFromEvent(e);
+              setProgress(percent);
+            }
+          };
+          
+          // 拖拽结束
+          const handleMouseUp = () => {
+            if (isDragging) {
+              isDragging = false;
+              setTimeout(() => {
+                isUserSeeking = false;
+              }, 100);
+            }
+          };
+          
+          document.addEventListener('mousemove', handleMouseMove);
+          document.addEventListener('mouseup', handleMouseUp);
+          
+          // 触摸事件支持（移动端）
+          progressBar.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            isDragging = true;
+            isUserSeeking = true;
+            const touch = e.touches[0];
+            const rect = progressBar.getBoundingClientRect();
+            const clickX = touch.clientX - rect.left;
+            const percent = (clickX / rect.width) * 100;
+            setProgress(percent);
+          });
+          
+          const handleTouchMove = (e) => {
+            if (isDragging) {
+              e.preventDefault();
+              const touch = e.touches[0];
+              const rect = progressBar.getBoundingClientRect();
+              const clickX = touch.clientX - rect.left;
+              const percent = (clickX / rect.width) * 100;
+              setProgress(percent);
+            }
+          };
+          
+          const handleTouchEnd = () => {
+            if (isDragging) {
+              isDragging = false;
+              setTimeout(() => {
+                isUserSeeking = false;
+              }, 100);
+            }
+          };
+          
+          document.addEventListener('touchmove', handleTouchMove);
+          document.addEventListener('touchend', handleTouchEnd);
+        }
+        
+        // 监听音频播放状态
+        hiddenAudio.addEventListener('play', () => {
+          const btn = $(`playBtn${stepIndex}`);
+          if (btn) {
+            btn.textContent = '⏸';
+            btn.classList.add('pause');
+          }
+        });
+        
+        hiddenAudio.addEventListener('pause', () => {
+          const btn = $(`playBtn${stepIndex}`);
+          if (btn) {
+            btn.textContent = '▶';
+            btn.classList.remove('pause');
+          }
+        });
+        
+        hiddenAudio.addEventListener('ended', () => {
+          const btn = $(`playBtn${stepIndex}`);
+          if (btn) {
+            btn.textContent = '▶';
+            btn.classList.remove('pause');
+          }
+        });
+        
+        // 监听时间更新
+        hiddenAudio.addEventListener('timeupdate', updateProgress);
+        hiddenAudio.addEventListener('loadedmetadata', updateProgress);
+        
+        // 显示下载按钮
+        const downloadBtn = $(`downloadAudioBtn${stepIndex}`);
+        if (downloadBtn) {
+          downloadBtn.style.display = 'flex';
+          downloadBtn.disabled = false;
+        }
+      } else if (content.audioError) {
+        audioEl.innerHTML = `<div style="text-align: center; padding: 20px; color: #b00020; display: flex; align-items: center; justify-content: center; height: 100%;">音乐生成失败：${content.audioError}</div>`;
+        // 隐藏下载按钮
+        const downloadBtn = $(`downloadAudioBtn${stepIndex}`);
+        if (downloadBtn) downloadBtn.style.display = 'none';
+      } else {
+        // 音乐区域在生成时不显示任何内容（保持空白）
+        audioEl.innerHTML = '';
+        // 隐藏下载按钮
+        const downloadBtn = $(`downloadAudioBtn${stepIndex}`);
+        if (downloadBtn) downloadBtn.style.display = 'none';
+      }
+    }
+    
+    // 更新总下载按钮状态（在歌词下方的按钮）
+    const downloadAllBtn = $(`downloadAllBtn${stepIndex}`);
+    if (downloadAllBtn && currentStepIndex === stepIndex) {
+      const hasAllContent = content?.lyrics && content?.imageUrl && content?.audioUrl;
+      downloadAllBtn.disabled = !hasAllContent;
+      if (hasAllContent) {
+        downloadAllBtn.style.display = 'flex';
+      } else {
+        downloadAllBtn.style.display = 'none';
+      }
+    }
+  }
+
+  // 更新导航按钮状态
+  function updateNavigationButtons() {
+    const totalSteps = decomposedData.steps.length;
+    $('btnPrev').disabled = currentStepIndex === 0;
+    $('btnNext').disabled = currentStepIndex >= totalSteps - 1;
+    $('btnRegenerate').disabled = !stepContents[currentStepIndex];
+  }
+
+  // 上一步
+  function goToPrevStep() {
+    if (currentStepIndex > 0) {
+      currentStepIndex--;
+      showCurrentStep();
+      updateNavigationButtons();
+    }
+  }
+
+  // 下一步
+  function goToNextStep() {
+    const totalSteps = decomposedData.steps.length;
+    if (currentStepIndex < totalSteps - 1) {
+      currentStepIndex++;
+      showCurrentStep();
+      updateNavigationButtons();
+    }
+  }
+
+  // 重新生成当前步骤
+  async function regenerateCurrentStep() {
+    if (isGeneratingAll) {
+      alert('正在生成所有内容，请稍候...');
+      return;
+    }
+
+    const step = decomposedData.steps[currentStepIndex];
+    if (!step) return;
+
+    const statusEl = $('generateStatus');
+    statusEl.className = 'muted';
+    statusEl.textContent = `正在重新生成步骤 ${currentStepIndex + 1}...`;
+    $('btnRegenerate').disabled = true;
+
+    try {
+      // 清除当前步骤的缓存
+      stepContents[currentStepIndex] = null;
+      
+      // 重新生成内容
+      await generateStepContent(currentStepIndex);
+      
+      // 立即显示新生成的内容
+      displayStepContent(currentStepIndex);
+      
+      statusEl.className = 'ok';
+      statusEl.textContent = `✅ 步骤 ${currentStepIndex + 1} 重新生成完成！`;
+      
+      // 检查是否所有步骤都完成，如果是则保存历史记录
+      const allStepsComplete = decomposedData.steps.every((step, index) => {
+        const content = stepContents[index];
+        if (!content) return false;
+        const hasLyrics = content.lyrics || content.lyricsError;
+        const hasImage = content.imageUrl || content.imageError;
+        const hasAudio = content.audioUrl || content.audioError;
+        return hasLyrics && hasImage && hasAudio;
+      });
+      
+      if (allStepsComplete) {
+        try {
+          await saveHistory();
+        } catch (e) {
+          console.error('保存历史记录失败:', e);
+        }
+      }
+    } catch (e) {
+      statusEl.className = 'err';
+      statusEl.textContent = `❌ 生成失败：${e?.message || e}`;
+    } finally {
+      $('btnRegenerate').disabled = false;
+      updateNavigationButtons();
+    }
+  }
+
+  // 一次性生成所有步骤的内容
+  async function generateAllSteps() {
+    if (!decomposedData || !decomposedData.steps || decomposedData.steps.length === 0) {
+      alert('请先分解学习目标');
+      return;
+    }
+
+    if (isGeneratingAll) {
+      alert('正在生成中，请稍候...');
+      return;
+    }
+
+    isGeneratingAll = true;
+    const statusEl = $('generateStatus');
+    statusEl.className = 'muted';
+    statusEl.textContent = '正在生成所有步骤的内容，请稍候...';
+    $('btnGenerateAll').style.display = 'none'; // 隐藏按钮
+    $('btnRegenerate').disabled = true;
+    $('btnPrev').disabled = true;
+    $('btnNext').disabled = true;
+
+    try {
+      const totalSteps = decomposedData.steps.length;
+      
+      for (let i = 0; i < totalSteps; i++) {
+        statusEl.textContent = `正在生成步骤 ${i + 1}/${totalSteps}...`;
+        
+        try {
+          await generateStepContent(i);
+        } catch (e) {
+          console.error(`步骤 ${i + 1} 生成失败:`, e);
+          // 继续生成其他步骤
+        }
+      }
+
+      statusEl.className = 'ok';
+      statusEl.textContent = `✅ 所有步骤内容生成完成！共 ${totalSteps} 个步骤`;
+      
+      // 显示当前步骤的内容
+      showCurrentStep();
+      
+      // 保存历史记录（所有步骤都生成完成）
+      try {
+        await saveHistory();
+      } catch (e) {
+        console.error('保存历史记录失败:', e);
+      }
+    } catch (e) {
+      statusEl.className = 'err';
+      statusEl.textContent = `❌ 生成过程中出错：${e?.message || e}`;
+    } finally {
+      isGeneratingAll = false;
+      updateNavigationButtons();
+    }
+  }
+
+  // 生成单个步骤的内容
+  async function generateStepContent(stepIndex) {
+    const step = decomposedData.steps[stepIndex];
+    const characterName = decomposedData.character_name || '小动物';
+    const musicStyle = getActualValue('musicStyle', 'musicStyleCustom');
+    const musicVoice = getActualValue('musicVoice', 'musicVoiceCustom');
+    const pictureBookStyle = getActualValue('pictureBookStyle', 'pictureBookStyleCustom');
+    const totalSteps = decomposedData.steps.length;
+
+    // 初始化内容为空对象，这样 displayStepContent 会显示积木动画
+    stepContents[stepIndex] = {};
+    
+    // 如果当前显示的是这个步骤，立即显示积木动画
+    if (currentStepIndex === stepIndex) {
+      displayStepContent(stepIndex);
+    }
+
+    // 生成歌词
+    const lyricsResp = await fetch('/api/generate-lyrics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        step,
+        characterName,
+        musicStyle,
+        musicVoice,
+        stepNumber: stepIndex + 1,
+        totalSteps,
+      }),
+    });
+
+    const lyricsData = await lyricsResp.json().catch(() => ({}));
+    if (!lyricsResp.ok) {
+      throw new Error(lyricsData?.error || '歌词生成失败');
+    }
+
+    let lyrics = lyricsData.lyrics || '';
+    
+    // 清理歌词，移除可能的时长指令（避免重复）
+    lyrics = lyrics.replace(/\[Duration:.*?\]/gi, '').trim();
+
+    // 生成图片提示词（整合绘本风格 + 角色设定卡强绑定）
+    const cs = decomposedData && decomposedData.character_sheet ? decomposedData.character_sheet : null;
+    const csBlock = cs && cs.reference_prompt
+      ? `\n\n角色设定卡（必须严格遵守，所有步骤完全一致，不允许任何变化）：\n${cs.reference_prompt}\n\n一致性硬规则：\n- 必须保持同一张脸、同一发型、同一衣服、同一配饰、同一主色调、同一画风\n- 禁止换装、禁止换发型、禁止变成不同人物/不同动物、禁止年龄变化\n- 如果无法保证一致性，请重新生成直到一致\n`
+      : `\n\n角色一致性硬规则（缺少设定卡时仍必须遵守）：\n- 角色“乐乐”必须出现在画面中\n- 所有步骤保持同一张脸、同一发型、同一衣服、同一画风，不换装不换发型\n`;
+
+    const imagePrompt = `为3-6岁自闭症儿童创作“绘本场景插画”。\n\n学习内容：\n- 学习步骤：${step.step_name}\n- 步骤描述：${step.step_description}\n- 学习目标：${step.learning_objective}\n- 当前步骤：第${stepIndex + 1}步，共${totalSteps}步\n- 绘本风格：${pictureBookStyle}\n${csBlock}\n核心要求：\n1. **绘本场景（不要只画一个物体）**：学习对象必须处在一个温馨的生活场景中（家里/教室/公园/厨房/浴室/客厅等），并有适量背景元素，但画面不拥挤。\n2. **角色必须出现并与设定卡完全一致**：角色“乐乐”必须出现，并严格按“角色设定卡”绘制，所有步骤一致。\n3. **学习对象清晰可辨**：学习对象清晰、准确、占重要位置；角色可以指向/拿起/使用该对象。\n4. **符合生活常识**：物品与场景符合现实，不扭曲、不超现实。\n5. **画面简洁但不空**：色彩明亮柔和，避免强刺激对比与复杂文字。\n6. **突出核心认知点**：用角色动作突出要学的点（如洗手就在洗手台前洗手）。\n7. **严格安全性要求**：温馨安全正面，避免恐怖/暴力/危险物品等。\n8. **画面连续性**：多步骤尽量保持同一地点/同一角色/同一物品外观连续。\n\n请生成一幅符合要求的绘本插画。`;
+
+    // 并行生成音乐和图片
+    const [musicResult, imageResult] = await Promise.allSettled([
+      generateMusicForStep(lyrics, step.step_name, musicStyle, musicVoice),
+      generateImageWithPrompt(imagePrompt),
+    ]);
+
+    // 保存到缓存
+    stepContents[stepIndex] = {
+      lyrics: lyrics,
+      imageUrl: imageResult.status === 'fulfilled' ? imageResult.value : null,
+      audioUrl: musicResult.status === 'fulfilled' ? musicResult.value : null,
+      imageError: imageResult.status === 'rejected' ? (imageResult.reason?.message || imageResult.reason) : null,
+      audioError: musicResult.status === 'rejected' ? (musicResult.reason?.message || musicResult.reason) : null,
+    };
+
+    // 如果当前显示的是这个步骤，立即更新显示
+    if (currentStepIndex === stepIndex) {
+      displayStepContent(stepIndex);
+    }
+    
+    // 更新导航按钮状态（如果当前步骤有内容了，可以重新生成）
+    if (currentStepIndex === stepIndex) {
+      updateNavigationButtons();
+    }
+    
+    // 自动保存生成的内容
+    try {
+      await saveStepContent(stepIndex);
+    } catch (e) {
+      console.error('自动保存失败:', e);
+    }
+  }
+
+  // 为步骤生成音乐
+  async function generateMusicForStep(lyrics, title, musicStyle, musicVoice) {
+    // 彻底清理歌词，移除所有时长控制指令（避免被当作歌词内容）
+    let cleanLyrics = lyrics.replace(/\[Duration:.*?\]/gi, '').trim();
+    cleanLyrics = cleanLyrics.replace(/Make this song.*?seconds.*?\n/gi, '').trim();
+    cleanLyrics = cleanLyrics.replace(/The song must be brief.*?\n/gi, '').trim();
+    cleanLyrics = cleanLyrics.replace(/Keep it short and simple.*?\n/gi, '').trim();
+    cleanLyrics = cleanLyrics.replace(/no longer than.*?\n/gi, '').trim();
+    cleanLyrics = cleanLyrics.replace(/exactly.*?seconds.*?\n/gi, '').trim();
+    // 移除多余的空行
+    cleanLyrics = cleanLyrics.replace(/\n{3,}/g, '\n\n').trim();
+    
+    // 不再在 prompt 中添加时长指令，只通过 tags 和 title 传递时长要求
+    // 整合音乐风格和声音类型到 tags
+    const styleTags = `${musicStyle} style, ${musicVoice} voice, 40 seconds, short song, brief, quick, consistent vocal, same singer, stable tempo`;
+    
+    const payload = {
+      mv: 'chirp-v4-5',
+      custom_mode: true,
+      make_instrumental: false,
+      prompt: cleanLyrics, // 只使用清理后的纯歌词，不包含任何指令文本
+      title: title ? `${title} (40s, ${musicVoice}, Consistent Voice)` : `Short Song (40s, ${musicVoice}, Consistent Voice)`,
+      tags: styleTags,
+    };
+
+    const submitResp = await fetch('/api/suno/submit/music', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!submitResp.ok) {
+      const errorText = await submitResp.text().catch(() => '');
+      throw new Error(`submit failed: ${submitResp.status} ${errorText}`);
+    }
+
+    const submitData = await submitResp.json().catch((e) => {
+      throw new Error(`JSON parse error: ${e.message}`);
+    });
+
+    const taskId = submitData?.data?.taskId || 
+                   submitData?.data?.task_id || 
+                   submitData?.id || 
+                   submitData?.data;
+
+    if (!taskId) {
+      const directUrl = pickFirstAudioUrl(submitData);
+      if (directUrl) return directUrl;
+      throw new Error('未拿到任务 id');
+    }
+
+    // 轮询获取结果
+    let i = 0;
+    while (i < 20) { // 最多轮询20次（100秒）
+      await sleep(5000);
+      const r = await fetchTask(taskId);
+
+      const statusText = Array.isArray(r) ? 'success' : (r?.data?.status || r?.status || '');
+      const st = String(statusText).toLowerCase();
+
+      if (st && ['failed','error','canceled','cancelled','fail'].includes(st)) {
+        const reason = r?.data?.status_reason || r?.data?.fail_reason || r?.fail_reason || '';
+        throw new Error('任务失败: ' + statusText + (reason ? ('，原因：' + JSON.stringify(reason)) : ''));
+      }
+
+      const url = pickFirstAudioUrl(r);
+      if (url) {
+        return url;
+      }
+
+      i++;
+    }
+
+    throw new Error('轮询超时：还未拿到 audio_url');
+  }
+
+  // 使用指定prompt生成图片
+  async function generateImageWithPrompt(imagePrompt) {
+    // 添加负面提示词，避免生成不安全或不符合常识的图片
+    const negativePrompt = `低分辨率，低画质，肢体畸形，手指畸形，画面过饱和，蜡像感，人脸无细节，过度光滑，画面具有AI感。构图混乱。文字模糊，扭曲。恐怖，黑暗，阴森，暴力，冲突，争吵，悲伤，哭泣，害怕，危险物品，怪物，鬼怪，恐怖角色，惊吓元素，焦虑，恐惧，扭曲，变形，不符合常识，奇怪的颜色，不符合现实，角色，人物，动物，卡通形象，抽象，超现实，艺术化，风格化`;
+    
+    const resp = await fetch('/api/generate-image', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        prompt: imagePrompt, 
+        size: '1664*928',
+        negative_prompt: negativePrompt
+      }),
+    });
+
+    const data = await resp.json().catch(() => ({}));
+
+    if (!resp.ok) {
+      throw new Error(data?.error || `HTTP ${resp.status}`);
+    }
+
+    if (!data.image_url) {
+      throw new Error('未返回图片URL');
+    }
+
+    return data.image_url;
+  }
+
+  // 辅助函数
+  async function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+  async function fetchTask(id) {
+    const res = await fetch('/api/suno/fetch?id=' + encodeURIComponent(id));
+    if (!res.ok) {
+      const errorText = await res.text().catch(() => '');
+      throw new Error(`fetch failed: ${res.status} ${errorText}`);
+    }
+    return await res.json().catch((e) => {
+      throw new Error(`JSON parse error: ${e.message}`);
+    });
+  }
+
+  function pickFirstAudioUrl(resp) {
+    const resultArray = resp?.data?.result;
+    if (Array.isArray(resultArray)) {
+      for (const item of resultArray) {
+        if (item?.audio_url) return item.audio_url;
+      }
+    }
+
+    const dataArray = resp?.data?.data;
+    if (Array.isArray(dataArray)) {
+      for (const item of dataArray) {
+        if (item?.audio_url) return item.audio_url;
+      }
+    }
+
+    const candidates = [resp, resp?.data, resp?.data?.data, resp?.data?.data?.data];
+    for (const obj of candidates) {
+      if (Array.isArray(obj)) continue;
+      const clips = obj?.clips;
+      if (Array.isArray(clips)) {
+        for (const c of clips) {
+          if (c?.audio_url) return c.audio_url;
+        }
+      }
+      if (obj?.audio_url) return obj.audio_url;
+    }
+    return '';
+  }
+
+  // 播放/暂停切换
+  function togglePlayPause(stepIndex) {
+    const audio = document.getElementById(`hiddenAudio${stepIndex}`);
+    if (!audio) return;
+    
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+
+  // 重新播放
+  function restartAudio(stepIndex) {
+    const audio = document.getElementById(`hiddenAudio${stepIndex}`);
+    if (!audio) return;
+    
+    audio.currentTime = 0;
+    audio.play();
+  }
+  
+  // 跳转到指定位置（保留兼容性，但主要使用拖拽功能）
+  function seekAudio(stepIndex, event) {
+    const audio = document.getElementById(`hiddenAudio${stepIndex}`);
+    const progressBar = document.getElementById(`progressBar${stepIndex}`);
+    if (!audio || !progressBar || !audio.duration) return;
+    
+    const rect = progressBar.getBoundingClientRect();
+    const clickX = event.clientX - rect.left;
+    const percent = (clickX / rect.width) * 100;
+    audio.currentTime = (percent / 100) * audio.duration;
+  }
+
+  // 保存生成的内容
+  async function saveStepContent(stepIndex) {
+    const content = stepContents[stepIndex];
+    if (!content) {
+      return; // 静默返回，不显示错误
+    }
+
+    const step = decomposedData.steps[stepIndex];
+    const stepName = step.step_name || `步骤${stepIndex + 1}`;
+    
+    // 如果是第一次保存，生成新的 sessionId
+    if (!currentSessionId) {
+      currentSessionId = `session_${Date.now()}`;
+    }
+    
+    try {
+      const resp = await fetch('/api/save-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          stepIndex: stepIndex + 1,
+          stepName: stepName,
+          lyrics: content.lyrics,
+          imageUrl: content.imageUrl,
+          audioUrl: content.audioUrl,
+          sessionId: currentSessionId,
+        }),
+      });
+
+      const data = await resp.json().catch(() => ({}));
+
+      if (!resp.ok) {
+        throw new Error(data?.error || `HTTP ${resp.status}`);
+      }
+
+      // 更新 sessionId（如果服务器返回了新的）
+      if (data.sessionId) {
+        currentSessionId = data.sessionId;
+      }
+
+      console.log(`✅ 步骤 ${stepIndex + 1} 内容已保存到: ${data.savedDir}`);
+    } catch (e) {
+      console.error(`❌ 保存失败：${e?.message || e}`);
+    }
+  }
+
+  // 下载功能辅助函数
+  async function downloadFile(url, filename, mimeType) {
+    try {
+      // 检查是否支持 File System Access API（现代浏览器）
+      if ('showDirectoryPicker' in window) {
+        // 使用 File System Access API 让用户选择文件夹
+        const dirHandle = await window.showDirectoryPicker();
+        const fileHandle = await dirHandle.getFileHandle(filename, { create: true });
+        const writable = await fileHandle.createWritable();
+        
+        // 获取文件内容
+        const response = await fetch(url);
+        const blob = await response.blob();
+        await writable.write(blob);
+        await writable.close();
+        
+        return true;
+      } else {
+        // 传统下载方式（下载到默认下载文件夹）
+        const response = await fetch(url);
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(blobUrl);
+        
+        return true;
+      }
+    } catch (error) {
+      console.error('下载失败:', error);
+      // 如果 File System Access API 失败，回退到传统下载
+      if (error.name !== 'AbortError') {
+        try {
+          const response = await fetch(url);
+          const blob = await response.blob();
+          const blobUrl = URL.createObjectURL(blob);
+          
+          const a = document.createElement('a');
+          a.href = blobUrl;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(blobUrl);
+          
+          return true;
+        } catch (e) {
+          console.error('传统下载也失败:', e);
+          alert('下载失败：' + (e.message || e));
+          return false;
+        }
+      }
+      return false;
+    }
+  }
+
+  // 下载文本文件
+  async function downloadTextFile(content, filename) {
+    try {
+      // 检查是否支持 File System Access API
+      if ('showDirectoryPicker' in window) {
+        const dirHandle = await window.showDirectoryPicker();
+        const fileHandle = await dirHandle.getFileHandle(filename, { create: true });
+        const writable = await fileHandle.createWritable();
+        
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        await writable.write(blob);
+        await writable.close();
+        
+        return true;
+      } else {
+        // 传统下载方式
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        const blobUrl = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(blobUrl);
+        
+        return true;
+      }
+    } catch (error) {
+      console.error('下载失败:', error);
+      if (error.name !== 'AbortError') {
+        // 回退到传统下载
+        try {
+          const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+          const blobUrl = URL.createObjectURL(blob);
+          
+          const a = document.createElement('a');
+          a.href = blobUrl;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(blobUrl);
+          
+          return true;
+        } catch (e) {
+          alert('下载失败：' + (e.message || e));
+          return false;
+        }
+      }
+      return false;
+    }
+  }
+
+  // 下载歌词
+  async function downloadLyrics(stepIndex) {
+    const content = stepContents[stepIndex];
+    if (!content || !content.lyrics) {
+      alert('歌词尚未生成');
+      return;
+    }
+
+    const step = decomposedData.steps[stepIndex];
+    const stepName = step.step_name || `步骤${stepIndex + 1}`;
+    const filename = `步骤${stepIndex + 1}_${stepName}_歌词.txt`;
+    
+    const cleanedLyrics = cleanLyrics(content.lyrics);
+    await downloadTextFile(cleanedLyrics, filename);
+  }
+
+  // 下载图片
+  async function downloadImage(stepIndex) {
+    const content = stepContents[stepIndex];
+    if (!content || !content.imageUrl) {
+      alert('图片尚未生成');
+      return;
+    }
+
+    const step = decomposedData.steps[stepIndex];
+    const stepName = step.step_name || `步骤${stepIndex + 1}`;
+    const filename = `步骤${stepIndex + 1}_${stepName}_图片.png`;
+    
+    await downloadFile(content.imageUrl, filename, 'image/png');
+  }
+
+  // 下载音频
+  async function downloadAudio(stepIndex) {
+    const content = stepContents[stepIndex];
+    if (!content || !content.audioUrl) {
+      alert('音频尚未生成');
+      return;
+    }
+
+    const step = decomposedData.steps[stepIndex];
+    const stepName = step.step_name || `步骤${stepIndex + 1}`;
+    const filename = `步骤${stepIndex + 1}_${stepName}_音频.mp3`;
+    
+    await downloadFile(content.audioUrl, filename, 'audio/mpeg');
+  }
+
+  // 下载所有内容（歌词、图片、音频）
+  async function downloadAllStepContent(stepIndex) {
+    const content = stepContents[stepIndex];
+    if (!content) {
+      alert('内容尚未生成');
+      return;
+    }
+
+    const hasAll = content.lyrics && content.imageUrl && content.audioUrl;
+    if (!hasAll) {
+      alert('部分内容尚未生成，无法下载全部');
+      return;
+    }
+
+    const step = decomposedData.steps[stepIndex];
+    const stepName = step.step_name || `步骤${stepIndex + 1}`;
+    const folderName = `步骤${stepIndex + 1}_${stepName}`;
+
+    try {
+      // 检查是否支持 File System Access API
+      if ('showDirectoryPicker' in window) {
+        // 让用户选择文件夹
+        const dirHandle = await window.showDirectoryPicker();
+        
+        // 创建子文件夹（如果用户选择的是父文件夹）
+        let targetDirHandle = dirHandle;
+        try {
+          targetDirHandle = await dirHandle.getDirectoryHandle(folderName, { create: true });
+        } catch (e) {
+          // 如果无法创建子文件夹，直接使用选择的文件夹
+          targetDirHandle = dirHandle;
+        }
+
+        // 下载歌词
+        const lyricsFilename = `歌词.txt`;
+        const lyricsFileHandle = await targetDirHandle.getFileHandle(lyricsFilename, { create: true });
+        const lyricsWritable = await lyricsFileHandle.createWritable();
+        const cleanedLyrics = cleanLyrics(content.lyrics);
+        const lyricsBlob = new Blob([cleanedLyrics], { type: 'text/plain;charset=utf-8' });
+        await lyricsWritable.write(lyricsBlob);
+        await lyricsWritable.close();
+
+        // 下载图片
+        const imageFilename = `图片.png`;
+        const imageResponse = await fetch(content.imageUrl);
+        const imageBlob = await imageResponse.blob();
+        const imageFileHandle = await targetDirHandle.getFileHandle(imageFilename, { create: true });
+        const imageWritable = await imageFileHandle.createWritable();
+        await imageWritable.write(imageBlob);
+        await imageWritable.close();
+
+        // 下载音频
+        const audioFilename = `音频.mp3`;
+        const audioResponse = await fetch(content.audioUrl);
+        const audioBlob = await audioResponse.blob();
+        const audioFileHandle = await targetDirHandle.getFileHandle(audioFilename, { create: true });
+        const audioWritable = await audioFileHandle.createWritable();
+        await audioWritable.write(audioBlob);
+        await audioWritable.close();
+
+        alert('✅ 所有内容已下载完成！');
+      } else {
+        // 传统下载方式：逐个下载（浏览器会提示保存位置）
+        const cleanedLyrics = cleanLyrics(content.lyrics);
+        
+        // 下载歌词
+        await downloadTextFile(cleanedLyrics, `${folderName}_歌词.txt`);
+        await new Promise(resolve => setTimeout(resolve, 300)); // 延迟避免浏览器阻止多个下载
+        
+        // 下载图片
+        await downloadFile(content.imageUrl, `${folderName}_图片.png`, 'image/png');
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
+        // 下载音频
+        await downloadFile(content.audioUrl, `${folderName}_音频.mp3`, 'audio/mpeg');
+        
+        alert('✅ 所有内容已开始下载！请检查浏览器的下载文件夹。');
+      }
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        // 用户取消了文件夹选择，不显示错误
+        return;
+      }
+      console.error('下载失败:', error);
+      alert('下载失败：' + (error.message || error));
+    }
+  }
+
+  // 保存历史记录（当所有步骤都生成完成时）
+  async function saveHistory() {
+    if (!decomposedData || !stepContents || !currentSessionId) {
+      return;
+    }
+
+    // 检查所有步骤是否都完全生成
+    const allStepsComplete = decomposedData.steps.every((step, index) => {
+      const content = stepContents[index];
+      if (!content) return false;
+      const hasLyrics = content.lyrics || content.lyricsError;
+      const hasImage = content.imageUrl || content.imageError;
+      const hasAudio = content.audioUrl || content.audioError;
+      return hasLyrics && hasImage && hasAudio;
+    });
+
+    if (!allStepsComplete) {
+      console.log('部分步骤未完成，不保存历史记录');
+      return;
+    }
+
+    try {
+      const userGoal = $('userGoal').value.trim();
+      const learningFocus = $('learningFocus').value.trim();
+      const musicStyle = getActualValue('musicStyle', 'musicStyleCustom');
+      const musicVoice = getActualValue('musicVoice', 'musicVoiceCustom');
+      const pictureBookStyle = getActualValue('pictureBookStyle', 'pictureBookStyleCustom');
+      const characterType = getActualValue('characterType', 'characterTypeCustom');
+
+      const resp = await fetch('/api/save-history', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId: currentSessionId,
+          decomposedData: decomposedData,
+          stepContents: stepContents,
+          userGoal: userGoal,
+          learningFocus: learningFocus,
+          musicStyle: musicStyle,
+          musicVoice: musicVoice,
+          pictureBookStyle: pictureBookStyle,
+          characterType: characterType,
+        }),
+      });
+
+      const data = await resp.json().catch(() => ({}));
+
+      if (!resp.ok) {
+        throw new Error(data?.error || `HTTP ${resp.status}`);
+      }
+
+      console.log('✅ 历史记录已保存');
+    } catch (e) {
+      console.error('❌ 保存历史记录失败：', e?.message || e);
+    }
+  }
+
+  // 显示历史记录模态框
+  async function showHistoryModal() {
+    const modal = $('historyModal');
+    if (modal) {
+      modal.classList.add('active');
+      await loadHistoryList();
+    }
+  }
+
+  // 隐藏历史记录模态框
+  function hideHistoryModal() {
+    const modal = $('historyModal');
+    if (modal) {
+      modal.classList.remove('active');
+    }
+  }
+
+  // 加载历史记录列表
+  async function loadHistoryList() {
+    const historyListEl = $('historyList');
+    if (!historyListEl) return;
+
+    historyListEl.innerHTML = '<div class="history-loading">正在加载历史记录...</div>';
+
+    try {
+      const resp = await fetch('/api/history');
+      const data = await resp.json().catch(() => ({}));
+
+      if (!resp.ok) {
+        throw new Error(data?.error || `HTTP ${resp.status}`);
+      }
+
+      historyData = data.history || [];
+
+      if (historyData.length === 0) {
+        historyListEl.innerHTML = '<div class="history-empty">暂无历史记录</div>';
+        $('historyPagination').style.display = 'none';
+        return;
+      }
+
+      // 按时间倒序排列（最新的在前）
+      historyData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+      // 重置到第一页
+      historyCurrentPage = 1;
+      renderHistoryPage();
+    } catch (e) {
+      console.error('加载历史记录失败:', e);
+      historyListEl.innerHTML = `<div class="history-empty" style="color: #b00020;">加载失败：${e?.message || e}</div>`;
+      $('historyPagination').style.display = 'none';
+    }
+  }
+
+  // 渲染历史记录页面
+  function renderHistoryPage() {
+    const historyListEl = $('historyList');
+    const paginationEl = $('historyPagination');
+    if (!historyListEl || !paginationEl) return;
+
+    const totalPages = Math.ceil(historyData.length / historyPageSize);
+    const startIndex = (historyCurrentPage - 1) * historyPageSize;
+    const endIndex = startIndex + historyPageSize;
+    const currentPageData = historyData.slice(startIndex, endIndex);
+
+    if (currentPageData.length === 0) {
+      historyListEl.innerHTML = '<div class="history-empty">暂无历史记录</div>';
+      paginationEl.style.display = 'none';
+      return;
+    }
+
+    historyListEl.innerHTML = currentPageData.map(item => {
+      const date = new Date(item.createdAt);
+      const dateStr = date.toLocaleString('zh-CN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+
+      return `
+        <div class="history-item">
+          <div class="history-item-content">
+            <div class="history-item-title">${item.userGoal || '未命名'}</div>
+            <div class="history-item-meta-row">
+              <div class="history-item-meta">
+                <div>${dateStr}</div>
+                <div>共 ${item.stepCount} 个步骤</div>
+              </div>
+              <button class="history-item-btn" onclick="importHistory('${item.sessionId}')">
+                📥 导入
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // 更新分页信息
+    if (totalPages > 1) {
+      paginationEl.style.display = 'flex';
+      $('historyPageInfo').textContent = `${historyCurrentPage} / ${totalPages}`;
+      $('historyPrevBtn').disabled = historyCurrentPage === 1;
+      $('historyNextBtn').disabled = historyCurrentPage === totalPages;
+    } else {
+      paginationEl.style.display = 'none';
+    }
+  }
+
+  // 上一页
+  function historyPrevPage() {
+    if (historyCurrentPage > 1) {
+      historyCurrentPage--;
+      renderHistoryPage();
+    }
+  }
+
+  // 下一页
+  function historyNextPage() {
+    const totalPages = Math.ceil(historyData.length / historyPageSize);
+    if (historyCurrentPage < totalPages) {
+      historyCurrentPage++;
+      renderHistoryPage();
+    }
+  }
+
+  // 导入历史记录
+  async function importHistory(sessionId) {
+    if (!sessionId) {
+      alert('无效的历史记录ID');
+      return;
+    }
+
+    try {
+      const resp = await fetch(`/api/history/${sessionId}`);
+      const data = await resp.json().catch(() => ({}));
+
+      if (!resp.ok) {
+        throw new Error(data?.error || `HTTP ${resp.status}`);
+      }
+
+      const historyData = data.data;
+      if (!historyData) {
+        throw new Error('历史记录数据为空');
+      }
+
+      // 导入分解数据
+      decomposedData = historyData.decomposedData;
+      currentStepIndex = 0;
+
+      // 导入步骤内容
+      stepContents = historyData.stepContents.map(item => ({
+        lyrics: item.lyrics,
+        imageUrl: item.imageUrl,
+        audioUrl: item.audioUrl,
+        lyricsError: item.lyricsError,
+        imageError: item.imageError,
+        audioError: item.audioError,
+      }));
+
+      // 导入设置
+      if (historyData.userGoal) {
+        $('userGoal').value = historyData.userGoal;
+      }
+      if (historyData.learningFocus) {
+        $('learningFocus').value = historyData.learningFocus;
+      }
+      if (historyData.musicStyle) {
+        $('musicStyle').value = historyData.musicStyle;
+      }
+      if (historyData.musicVoice) {
+        $('musicVoice').value = historyData.musicVoice;
+      }
+      if (historyData.pictureBookStyle) {
+        $('pictureBookStyle').value = historyData.pictureBookStyle;
+      }
+      if (historyData.characterType) {
+        $('characterType').value = historyData.characterType;
+      }
+
+      // 更新 sessionId
+      currentSessionId = sessionId;
+
+      // 显示角色信息
+      if (decomposedData.character_name) {
+        $('characterInfo').style.display = 'block';
+        $('characterDetails').innerHTML = `
+          <div><strong>角色：</strong>${decomposedData.character_name}</div>
+          <div style="margin-top: 4px;"><strong>描述：</strong>${decomposedData.character_description || '可爱的学习伙伴'}</div>
+        `;
+      }
+
+      // 显示步骤区域
+      $('stepsSection').style.display = 'block';
+      $('welcomeMessage').style.display = 'none';
+      $('stepsContainer').style.display = 'block';
+
+      // 渲染步骤
+      renderStepIndicator();
+      renderStepContents();
+      showCurrentStep();
+      updateNavigationButtons();
+
+      // 关闭历史记录模态框
+      hideHistoryModal();
+
+      alert('✅ 历史记录导入成功！');
+    } catch (e) {
+      console.error('导入历史记录失败:', e);
+      alert('导入失败：' + (e?.message || e));
+    }
+  }
+
+  // 将函数暴露到全局作用域
+  window.togglePlayPause = togglePlayPause;
+  window.restartAudio = restartAudio;
+  window.seekAudio = seekAudio;
+  window.seekAudio = seekAudio;
+  window.saveStepContent = saveStepContent;
+  window.downloadLyrics = downloadLyrics;
+  window.downloadImage = downloadImage;
+  window.downloadAudio = downloadAudio;
+  window.downloadAllStepContent = downloadAllStepContent;
+  window.showHistoryModal = showHistoryModal;
+  window.hideHistoryModal = hideHistoryModal;
+  window.importHistory = importHistory;
+  window.historyPrevPage = historyPrevPage;
+  window.historyNextPage = historyNextPage;
+  window.historyPrevPage = historyPrevPage;
+  window.historyNextPage = historyNextPage;
+
+  // 初始化自定义输入处理
+  setupCustomInputs();
+
+  // 事件监听
+  $('btnDecompose').addEventListener('click', decomposeGoal);
+  $('btnPrev').addEventListener('click', goToPrevStep);
+  $('btnNext').addEventListener('click', goToNextStep);
+  $('btnRegenerate').addEventListener('click', regenerateCurrentStep);
+  $('btnGenerateAll').addEventListener('click', generateAllSteps);
+</script>
+</body>
+</html>
