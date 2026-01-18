@@ -1,0 +1,78 @@
+{
+  "sessionId": "session_1768664917028",
+  "userGoal": "认识开心情绪",
+  "learningFocus": "",
+  "musicStyle": "欢快",
+  "musicVoice": "男生",
+  "pictureBookStyle": "童话",
+  "characterType": "男生",
+  "decomposedData": {
+    "steps": [
+      {
+        "step_number": 1,
+        "step_name": "认识乐乐的笑脸",
+        "step_description": "画面中乐乐站在阳光下的草地上，微笑着挥手。他的眼睛弯弯的，嘴巴大大地张开，露出整齐的小牙齿。背景是彩色气球和飘动的花瓣，音乐轻快活泼，鼓励孩子模仿乐乐的微笑。",
+        "learning_objective": "让孩子识别开心的基本面部特征——笑容"
+      },
+      {
+        "step_number": 2,
+        "step_name": "乐乐开心跳跳舞",
+        "step_description": "乐乐在花园里随着音乐轻轻跳跃，双手高举摆动，脚尖点地像小兔子一样蹦跳。他的脸上一直带着灿烂的笑容，周围有蝴蝶围绕飞舞，音乐节奏明快，引导孩子跟着节拍轻晃身体。",
+        "learning_objective": "通过肢体动作体验开心的情绪表达"
+      },
+      {
+        "step_number": 3,
+        "step_name": "乐乐收到一朵小红花",
+        "step_description": "一只友善的小松鼠递给乐乐一朵发光的小红花，乐乐双手接过，开心地转圈圈，脸上充满惊喜与喜悦。花朵微微闪烁，背景响起掌声般的音符声，音乐温暖欢快。",
+        "learning_objective": "理解让人开心的生活小事件"
+      },
+      {
+        "step_number": 4,
+        "step_name": "我们一起对乐乐笑",
+        "step_description": "乐乐面向屏幕，轻轻拍拍手，邀请孩子一起笑一笑。画面中出现虚线轮廓的笑脸，等待孩子‘画’出来。当时间到，笑脸完成，彩虹升起，音乐达到高潮，充满庆祝感。",
+        "learning_objective": "鼓励孩子主动表达开心情绪"
+      }
+    ],
+    "character_name": "乐乐",
+    "character_description": "爱笑的男孩，穿着黄色背带裤"
+  },
+  "stepContents": [
+    {
+      "stepIndex": 0,
+      "lyrics": "[Verse]  \n乐乐笑，乐乐笑，  \n弯弯眼睛咯咯叫。  \n啦啦啦，哈哈哈，  \n开心就来找乐乐！  \n\n[Verse]  \n嘴巴张，牙齿亮，  \n乐乐笑着挥挥手。  \n啦啦啦，哈哈哈，  \n一起学他露笑容！  \n\n[Chorus]  \n笑一笑，笑一笑，  \n像乐乐那样笑！  \n笑一笑，笑一笑，  \n开心快乐没烦恼！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/fd/20260117/d23adf3d/312c39d8-4cc6-4b1f-9410-cd93eead32022740359369.png?Expires=1769270680&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=IetCAQn6S19v8TBBLJVcb4kN0ZA%3D",
+      "audioUrl": "https://cdn1.suno.ai/8043e7ba-c41e-40b8-b8eb-7e040ab2fdab.mp3",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 1,
+      "lyrics": "[Verse]  \n乐乐跳，乐乐笑，  \n啦啦啦，蹦蹦跳，  \n脚尖点点像小兔，  \n手举高高摇啊摇。  \n\n[Verse]  \n蝴蝶飞，阳光照，  \n乐乐笑，真热闹，  \n咚咚咚，拍拍手，  \n开心蹦跳哈哈笑！  \n\n[Chorus]  \n乐乐笑，哈哈哈，  \n我们一起跳一跳，  \n乐乐笑，哈哈哈，  \n开心蹦跳哈哈笑！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/70/20260117/d23adf3d/df1b27bb-91e3-4393-91fa-89159d7bc3fb2483775244.png?Expires=1769270741&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=nJRLc8dvVPYacfYq39ESVq%2Bhek0%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=e74909b8-e734-48fe-9f91-5ffd5afea885",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 2,
+      "lyrics": "[Verse]  \n乐乐笑，嘿嘿嘿，  \n小花亮，闪闪闪。  \n松鼠送，一朵花，  \n啦啦啦，真欢喜！  \n\n[Verse]  \n乐乐转，圈圈圆，  \n小花闪，点点亮。  \n手拍拍，笑哈哈，  \n开心事，真美妙！  \n\n[Chorus]  \n嘿嘿嘿，真欢喜，  \n嘿嘿嘿，笑嘻嘻！  \n嘿嘿嘿，真欢喜，  \n开心事，真美妙！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/cd/20260117/d23adf3d/da0e584b-e462-4152-995e-3514e5450e8c1171439327.png?Expires=1769270800&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=F9BVDVgUOfkmpLKTA34EmIJ3UKw%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=fa27f6c9-0feb-4444-974b-140ca3d40537",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 3,
+      "lyrics": "[Verse]  \n乐乐拍拍手  \n笑一笑，点点头  \n弯弯眼睛像月牙  \n我们一起画笑脸  \n\n[Chorus]  \n哈哈哈，乐乐笑  \n哈哈哈，真奇妙  \n哈哈哈，一起跳  \n\n[Verse]  \n乐乐望着你  \n笑一笑，多欢喜  \n彩虹升起飘呀飘  \n开心就大声笑出来  \n\n[Chorus]  \n哈哈哈，乐乐笑  \n哈哈哈，真奇妙  \n哈哈哈，一起跳",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/49/20260117/d23adf3d/e8b342f7-3fdf-41d5-aa0f-a955a42147773058234810.png?Expires=1769270851&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=PXpiu5zNfz7Yi1vIKF2x5kTAil8%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=d0a6c0ed-cd5d-47fc-9f21-fef84cb9fca2",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    }
+  ],
+  "createdAt": "2026-01-17T15:51:20.875Z"
+}

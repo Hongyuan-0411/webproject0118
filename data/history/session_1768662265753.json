@@ -1,0 +1,93 @@
+{
+  "sessionId": "session_1768662265753",
+  "userGoal": "困了要和爸爸妈妈说出来",
+  "learningFocus": "",
+  "musicStyle": "欢快",
+  "musicVoice": "男生",
+  "pictureBookStyle": "童话",
+  "characterType": "男生",
+  "decomposedData": {
+    "steps": [
+      {
+        "step_number": 1,
+        "step_name": "认识乐乐和家",
+        "step_description": "画面中阳光明媚，乐乐在彩色小屋里开心地玩耍。爸爸和妈妈微笑着走进来，轻轻挥手打招呼。乐乐指着沙发说：‘这是我的家，有爸爸、妈妈和我！’背景音乐轻快活泼，男生清脆地唱：‘乐乐的家，暖暖的家，爸爸妈妈都在呀！’",
+        "learning_objective": "建立安全感，认识家庭成员和表达‘家’的概念"
+      },
+      {
+        "step_number": 2,
+        "step_name": "乐乐累了要休息",
+        "step_description": "乐乐玩了一会儿积木后，揉了揉眼睛，打了个小小的哈欠。他坐在软软的小毯子上，轻轻拍拍自己的膝盖说：‘乐乐困了，要休息啦。’音乐节奏舒缓欢快，男生唱道：‘玩累了，困了呀，说出来，不害怕！’",
+        "learning_objective": "识别‘困了’的身体感觉，并与休息建立联系"
+      },
+      {
+        "step_number": 3,
+        "step_name": "乐乐告诉爸爸妈妈",
+        "step_description": "乐乐站起来，走到正在看书的爸爸和妈妈面前，轻轻拉拉妈妈的手说：‘妈妈，我困了。’妈妈温柔地点头，爸爸竖起大拇指。音乐轻快鼓励，男生唱：‘困了就说出来，爸爸妈妈听得见！’",
+        "learning_objective": "学习用语言表达‘我困了’的需求"
+      },
+      {
+        "step_number": 4,
+        "step_name": "我们一起说一说",
+        "step_description": "画面变成互动场景，乐乐站在中间，爸爸和妈妈坐在彩虹椅子上。乐乐每次说‘我困了’，天空就飘出一个闪亮的话语泡泡，音乐带动节奏，男生邀请式地唱：‘你也来说一说，困了要说出来哦～’",
+        "learning_objective": "模仿并练习说出‘我困了’的句子"
+      },
+      {
+        "step_number": 5,
+        "step_name": "乐乐安心去睡觉",
+        "step_description": "乐乐牵着爸爸和妈妈的手，走向铺着星星被子的小床。他笑着说：‘我说了困了，现在要去睡觉啦！’窗外月亮微笑，音乐温柔结束：‘说出来，真勇敢，甜甜梦儿抱抱你～’",
+        "learning_objective": "建立表达需求后获得积极回应的安全感和成就感"
+      }
+    ],
+    "character_name": "乐乐",
+    "character_description": "活泼可爱的男孩，爱笑爱表达"
+  },
+  "stepContents": [
+    {
+      "stepIndex": 0,
+      "lyrics": "[Verse]  \n乐乐乐，笑呵呵，  \n彩色小屋是我家。  \n爸爸妈妈在身边，  \n啦啦啦，暖暖的家！  \n\n[Verse]  \n手拉手，转个圈，  \n咚咚咚，敲敲门。  \n乐乐说：欢迎来我家，  \n有爸爸，有妈妈！  \n\n[Chorus]  \n家家家，暖暖的家，  \n乐乐的家，笑哈哈！  \n家家家，有你有我，  \n爸爸妈妈都在呀！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/cc/20260117/d23adf3d/65d78aae-94d4-429c-ba53-1117e0276c2d4235221994.png?Expires=1769268052&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=Rr7BtJCO8yOEN0VD6ARt7fpbyZk%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=b1aa585a-8640-4ebb-83bc-b2caa9a9105f",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 1,
+      "lyrics": "[Verse]  \n乐乐玩，搭积木，  \n咔嗒咔嗒堆高高。  \n揉揉眼，打哈欠，  \n困了困了要睡觉。  \n\n[Chorus]  \n困了呀，要休息，  \n拍拍膝盖说一句：  \n“乐乐困，要休息！”  \n啦啦啦，闭眼睛～  \n\n[Verse]  \n小眼睛，眨一眨，  \n软毯子，像云朵。  \n手轻轻，拍一拍，  \n乐乐乖乖要睡咯。  \n\n[Chorus]  \n困了呀，要休息，  \n拍拍膝盖说一句：  \n“乐乐困，要休息！”  \n啦啦啦，闭眼睛～",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/aa/20260117/d23adf3d/536f4f69-5721-4fb3-87da-cbddef249ca5427628681.png?Expires=1769268093&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=OM90PnbruWhKCMBU329Zp9TuocU%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=5f85bcd4-a4c8-4224-a120-590fcbde59a3",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 2,
+      "lyrics": "[Verse]  \n乐乐困了，揉揉眼，  \n轻轻说：我困了！  \n拉拉妈妈，手暖暖，  \n我困了，要睡觉。  \n\n[Verse]  \n爸爸听，点点头，  \n竖起大拇指，真棒哟！  \n妈妈抱，笑眯眯，  \n困了就说出来呀！  \n\n[Chorus]  \n我困了，我困了，  \n说出来，真勇敢！  \n我困了，我困了，  \n爸爸妈妈听得见！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/03/20260117/d23adf3d/d9d6de1a-75b0-4362-be90-6da62a8d19b31896845195.png?Expires=1769268132&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=B%2B6tO3Hqk4YebMsWBpGkVFzA8kw%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=6772acda-ed10-47da-8d04-1eaf0cd08c27",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 3,
+      "lyrics": "[Verse]  \n乐乐打个哈欠，我困了～  \n眼睛慢慢闭，我困了～  \n彩虹椅子摇，我困了～  \n爸爸笑一笑，我困了～  \n\n[Chorus]  \n你也说一说，我困了～  \n啦啦啦，说出来，我困了～  \n你也说一说，我困了～  \n乐乐点点头，我困了～  \n\n[Verse]  \n妈妈轻轻拍，我困了～  \n风儿哼着歌，我困了～  \n星星闪一闪，我困了～  \n我们一起说，我困了～",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/0b/20260117/d23adf3d/4730ae2f-9f23-482c-b790-e948ec344a83288503897.png?Expires=1769268172&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=viK3mB%2B%2Fv%2FcCt4GmFSXse3Va2N0%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=bf23988a-918a-4bc9-a938-024aa9021ed1",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 4,
+      "lyrics": "[Verse]  \n乐乐说困了，要睡觉  \n牵着爸妈手，笑弯腰  \n星星被子亮，月亮瞧  \n说出来真勇敢，不乱跑  \n\n[Chorus]  \n说出来，真勇敢  \n甜甜梦儿抱抱你～  \n说出来，真勇敢  \n甜甜梦儿抱抱你～  \n\n[Verse]  \n乐乐说困了，要睡觉  \n小床软软的，真奇妙  \n闭上小眼睛，安心笑  \n好梦轻轻来，抱一抱  \n\n[Chorus]  \n说出来，真勇敢  \n甜甜梦儿抱抱你～  \n说出来，真勇敢  \n甜甜梦儿抱抱你～",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/06/20260117/d23adf3d/6fb417a7-f2ec-4eb0-9409-d097dcdc889b3511702017.png?Expires=1769268214&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=421MkT24QfV7ZxeCbv3Vf%2BRG2g8%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=0ea5c1df-67a8-472d-9d60-a85e9bac753b",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    }
+  ],
+  "createdAt": "2026-01-17T15:07:27.876Z"
+}

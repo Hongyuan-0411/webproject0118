@@ -1,0 +1,93 @@
+{
+  "sessionId": "session_1768662554374",
+  "userGoal": "累了要和爸爸妈妈说出来",
+  "learningFocus": "",
+  "musicStyle": "欢快",
+  "musicVoice": "男生",
+  "pictureBookStyle": "童话",
+  "characterType": "男生",
+  "decomposedData": {
+    "steps": [
+      {
+        "step_number": 1,
+        "step_name": "认识乐乐和家",
+        "step_description": "画面中阳光明媚，乐乐在绿色草地上开心地跳跃。他跑向一座彩色小房子，门口有爸爸和妈妈微笑着挥手。音乐轻快活泼，歌词简单重复：‘我是乐乐，我爱我家，爸爸妈妈，等我回家！’帮助孩子熟悉角色与安全环境。",
+        "learning_objective": "建立安全感，认识角色与家庭环境"
+      },
+      {
+        "step_number": 2,
+        "step_name": "乐乐玩累了坐下休息",
+        "step_description": "乐乐在花园里吹泡泡、拍皮球，动作逐渐变慢。他轻轻坐在小椅子上，摸摸额头，微笑说：‘有点累啦！’背景音乐节奏放缓但仍欢快，歌词唱：‘玩得好开心，身体说休息，乐乐坐一坐，深呼吸真舒服。’",
+        "learning_objective": "识别身体疲劳信号，学会安静休息"
+      },
+      {
+        "step_number": 3,
+        "step_name": "乐乐找爸爸妈妈说话",
+        "step_description": "乐乐站起来，走向正在浇花的爸爸和妈妈。他举起小手轻轻拉衣角，清晰地说：‘爸爸，我累了。’爸爸蹲下微笑回应：‘好呀，我们一起坐一会儿。’音乐温柔鼓励，歌词：‘我累了，我说话，爸爸妈妈听我说话。’",
+        "learning_objective": "学习用语言表达需求，主动沟通"
+      },
+      {
+        "step_number": 4,
+        "step_name": "说出来真棒",
+        "step_description": "妈妈给乐乐递上一杯水，全家一起坐在长椅上看彩虹。乐乐笑得很灿烂，头顶出现闪亮小星星。音乐欢快庆祝，歌词唱：‘说出来真棒，我是勇敢的小太阳！’强化表达后的积极反馈。",
+        "learning_objective": "建立表达后的正向情绪联结"
+      },
+      {
+        "step_number": 5,
+        "step_name": "我们一起说：我累了",
+        "step_description": "乐乐站在家门口，面对镜头挥手，邀请小朋友一起说：‘我累了！’屏幕文字同步浮现，音乐带动节奏感强的合唱：‘我累了，我说出来，爸爸妈妈都听见！’鼓励模仿与参与。",
+        "learning_objective": "促进语言模仿与主动表达习惯"
+      }
+    ],
+    "character_name": "乐乐",
+    "character_description": "快乐温暖的男孩，爱笑爱家"
+  },
+  "stepContents": [
+    {
+      "stepIndex": 0,
+      "lyrics": "[Verse]  \n乐乐跑，乐乐跳，  \n草地上，阳光照。  \n啦啦啦，笑哈哈，  \n乐乐回家找爸妈！  \n\n[Verse]  \n敲敲门，咚咚咚，  \n爸爸妈，笑盈盈。  \n彩色屋，我的家，  \n乐乐爱它笑哈哈！  \n\n[Chorus]  \n我是乐乐，我爱我家，  \n爸爸妈妈，等我回家！  \n我是乐乐，我爱我家，  \n爸爸妈妈，等我回家！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/64/20260117/d23adf3d/9bbdc74f-dd07-4fde-8b3d-f4626bc16c38385641686.png?Expires=1769268306&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=RchcZwAiBKIgt9VmV54Lb0bLjws%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=0e83de3b-f282-4866-abbd-d59e6ada3137",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 1,
+      "lyrics": "[Verse]  \n乐乐吹泡泡，啪啪啪，  \n拍拍小皮球，咚咚咚。  \n跑呀跑呀慢慢走，  \n有点累啦，坐一坐。\n\n[Chorus]  \n休息一下，深呼吸，  \n休息一下，真舒服。  \n啦啦啦，呼——吸——  \n啦啦啦，呼——吸——\n\n[Verse]  \n乐乐坐小椅，笑嘻嘻，  \n摸摸小额头，静一静。  \n玩得好开心要记住：  \n身体累了，要休息。\n\n[Chorus]  \n休息一下，深呼吸，  \n休息一下，真舒服。  \n啦啦啦，呼——吸——  \n啦啦啦，呼——吸——",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/f9/20260117/d23adf3d/3ba5a047-6dff-401f-a8d1-12544e4e3eab1342864846.png?Expires=1769268381&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=MZr9Ucp3ZD0vx1M6OgZ7AThXsV0%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=dc55d804-ce9b-46b0-a3f0-a5ecbd2bc88f",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 2,
+      "lyrics": "[Verse]  \n乐乐走，乐乐看，  \n爸爸浇花在花园。  \n轻轻拉，轻轻说：  \n“我累了，我累了！”  \n\n[Verse]  \n妈妈笑，爸爸蹲，  \n一起坐下软又温。  \n手拍拍，嘴张张：  \n“我说话，我说话！”  \n\n[Chorus]  \n啦啦啦，听我说，  \n我累了，我说话；  \n啦啦啦，真勇敢，  \n爸爸妈妈听我说话！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/5d/20260117/d23adf3d/98422da2-f882-4f89-a6d6-dbdb22e119312238137571.png?Expires=1769268434&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=strTIQ4idPdFsJSyzwwDeDUNCf4%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=a87de9d4-843a-4931-9524-ac5941406d4e",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 3,
+      "lyrics": "[Verse]  \n乐乐说要水，妈妈笑微微。  \n递来一杯水，咕噜咕噜喝个美。  \n\n[Verse]  \n彩虹天上挂，星星头顶飞。  \n乐乐笑哈哈，啦啦啦真欢喜！  \n\n[Chorus]  \n说出来真棒，真棒真棒！  \n我是勇敢小太阳，小太阳！  \n说出来真棒，真棒真棒！  \n乐乐勇敢响当当，响当当！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/20/20260117/d23adf3d/700c1938-19ac-4c79-b17a-620c673d047e2103161247.png?Expires=1769268495&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=tbBHLAt3vln7WhK2YjvIu7frmT4%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=a6a550bf-2924-46ea-8620-7da9d0a5b413",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 4,
+      "lyrics": "[Verse]  \n乐乐站门口，挥挥手  \n我们一起说：我累了  \n我累了，说出来  \n爸爸妈妈听见了  \n\n[Chorus]  \n我累了！我说出来！  \n我累了！都听见！  \n我累了！我说出来！  \n\n[Verse]  \n乐乐真勇敢，点点头  \n我累了，我不怕说出口  \n说出来，真轻松  \n乐乐和你手拉手  \n\n[Chorus]  \n我累了！我说出来！  \n我累了！都听见！  \n我累了！我说出来！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/98/20260117/d23adf3d/5f33cb4a-f942-4ff5-87e8-9c76a209952c3697743432.png?Expires=1769268546&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=Z0p8CvF5%2BctHQm6Z6feKHQAQic0%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=e629e955-9ebd-4964-9e76-10fc98b39fa5",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    }
+  ],
+  "createdAt": "2026-01-17T15:13:26.646Z"
+}

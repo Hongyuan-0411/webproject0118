@@ -1,8 +1,5 @@
 node_modules/
 
-# Local data / generated assets
-data/
-
 # Env / secrets
 .env
 .env.*

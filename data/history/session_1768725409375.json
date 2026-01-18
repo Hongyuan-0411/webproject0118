@@ -1,0 +1,92 @@
+{
+  "sessionId": "session_1768725409375",
+  "userGoal": "和爸爸妈妈去交友",
+  "learningFocus": "",
+  "musicStyle": "欢快",
+  "musicVoice": "男生",
+  "pictureBookStyle": "童话",
+  "characterType": "男生",
+  "decomposedData": {
+    "steps": [
+      {
+        "step_number": 1,
+        "step_name": "认识乐乐和爸爸妈妈",
+        "step_description": "画面中，阳光明媚的早晨，乐乐站在家门口，微笑着挥手。爸爸和妈妈站在他身边，轻轻拍手欢迎。背景是彩色的小房子和飘着气球的花园。音乐轻快活泼，男生哼唱‘你好呀，乐乐！你好呀，爸爸妈妈！’重复简单歌词，鼓励孩子模仿打招呼。",
+        "learning_objective": "认识自己（乐乐）和主要陪伴者（爸爸妈妈），建立安全感和角色认知"
+      },
+      {
+        "step_number": 2,
+        "step_name": "手拉手一起去散步",
+        "step_description": "乐乐站在中间，左手牵着爸爸，右手牵着妈妈，三人一起沿着开满小花的小路慢慢走。路边有蝴蝶飞舞，小鸟唱歌。音乐节奏轻快，男生唱：‘手拉手，走一走，我们一起向前走！’动作简单同步，强调牵手和同行的温馨感。",
+        "learning_objective": "学习与家人身体连接，理解共同行动的概念"
+      },
+      {
+        "step_number": 3,
+        "step_name": "看到朋友，微笑问好",
+        "step_description": "前方草地上，另一个小朋友抱着小熊玩具坐着。乐乐和爸爸妈妈走近，乐乐停下脚步，指着小朋友露出微笑。爸爸轻声说：‘我们可以问好哦。’音乐中男生唱：‘笑一笑，说你好，朋友来了真热闹！’画面温暖明亮，对方孩子也回以微笑。",
+        "learning_objective": "识别社交信号（微笑、靠近），学习用微笑和语言问候他人"
+      },
+      {
+        "step_number": 4,
+        "step_name": "一起玩泡泡游戏",
+        "step_description": "四个孩子围成圈，乐乐和爸爸妈妈在其中，爸爸吹出五彩泡泡，大家伸手轻轻碰泡泡。乐乐开心地拍手跳起。音乐欢快，男生唱：‘泡泡飞，笑声响，我们一起玩得棒！’无竞争、无追逐，强调共享快乐时刻。",
+        "learning_objective": "参与集体互动游戏，体验与家人和朋友共处的愉悦"
+      }
+    ],
+    "character_name": "乐乐",
+    "character_description": "快乐小男孩，喜欢和家人一起",
+    "character_sheet": {
+      "name": "乐乐",
+      "type": "男生",
+      "age": "大约5岁",
+      "face": "圆脸，大眼睛，微笑",
+      "hair": "黑色短发，齐刘海",
+      "outfit": "黄色连帽卫衣，蓝色长裤",
+      "accessory": "红色小背包",
+      "main_colors": [
+        "黄色",
+        "蓝色"
+      ],
+      "reference_prompt": "圆脸大眼睛微笑男孩，黑色短发齐刘海，穿黄色连帽卫衣配蓝色长裤，背红色小背包，所有画面保持一致"
+    }
+  },
+  "stepContents": [
+    {
+      "stepIndex": 0,
+      "lyrics": "[主歌]  \n乐乐你好呀 乐乐你好呀  \n爸爸笑哈哈 妈妈笑哈哈  \n拍拍小手来 拍拍小手来  \n啦啦啦 啦啦啦  \n\n[副歌]  \n你好呀乐乐 你好呀爸妈  \n你好呀乐乐 你好呀爸妈  \n咚咚咚 叮叮叮 一起笑开花",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/fd/20260118/d23adf3d/ee179759-4524-41fe-8e12-3ff9c8d8a5901463116210.png?Expires=1769331171&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=e3IVz%2Bq44dVGmRrHnSTCUEUORco%3D",
+      "audioUrl": "https://cdn1.suno.ai/d0d54389-f1a9-4c43-8949-ec9c3f3c8d3d.mp3",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 1,
+      "lyrics": "[主歌]  \n手拉手，走一走，  \n手拉手，走一走。  \n乐乐左边牵爸爸，  \n乐乐右边牵妈妈。  \n\n[副歌]  \n走一走，向前走，  \n走一走，向前走！  \n花儿开，蝴蝶飞，  \n啦啦啦，向前走！  \n\n[主歌]  \n手拉手，走一走，  \n手拉手，走一走。",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/09/20260118/d23adf3d/c46123f3-d900-4e99-9cf9-726d42b917ae2665110340.png?Expires=1769331235&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=wI5x4O7bIC9Et7yJz%2BH7QTgWkeI%3D",
+      "audioUrl": "https://cdn1.suno.ai/d88a0dc2-d27c-4129-b865-99fe18f2cb51.mp3",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 2,
+      "lyrics": "[主歌]  \n乐乐走，乐乐看，  \n笑一笑，真可爱。  \n小熊坐，朋友来，  \n笑一笑，说你好！  \n\n[副歌]  \n你好你好，啦啦啦！  \n你好你好，真热闹！  \n笑一笑，说你好，  \n朋友来了真热闹！  \n\n[主歌]  \n乐乐笑，招招手，  \n说你好，点点头。  \n你也笑，我也笑，  \n笑一笑，真热闹！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/b9/20260118/d23adf3d/7ce0748c-222f-482f-8b55-2918c769f071721270222.png?Expires=1769331333&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=COQ%2BgQR0t%2BiDUbMUOOCYCLRGvPw%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=e5a8448a-0a68-4369-a73b-f3e0e3a0b4af",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 3,
+      "lyrics": "[主歌]  \n泡泡飞呀飞  \n乐乐笑微微  \n手儿轻轻碰  \n大家共游戏  \n\n[副歌]  \n一起玩，真欢喜  \n一起玩，好开心  \n\n[主歌]  \n爸爸吹泡泡  \n五彩空中飘  \n乐乐拍手跳  \n笑声满园绕  \n\n[副歌]  \n一起玩，真欢喜  \n一起玩，好开心",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/f6/20260118/d23adf3d/08dbe542-5349-4595-8962-ab5355abbd1f4141423107.png?Expires=1769331397&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=fhWpWTFex%2BnHxY3nTjyxqSPNaF0%3D",
+      "audioUrl": "https://cdn1.suno.ai/cd27d1a7-aae9-4c42-9723-c17afbad15f2.mp3",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    }
+  ],
+  "createdAt": "2026-01-18T08:40:36.705Z"
+}

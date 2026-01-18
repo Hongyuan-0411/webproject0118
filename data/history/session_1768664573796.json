@@ -1,0 +1,93 @@
+{
+  "sessionId": "session_1768664573796",
+  "userGoal": "和爸爸妈妈吃饭",
+  "learningFocus": "和爸爸妈妈吃好吃的",
+  "musicStyle": "欢快",
+  "musicVoice": "男生",
+  "pictureBookStyle": "童话",
+  "characterType": "男生",
+  "decomposedData": {
+    "steps": [
+      {
+        "step_number": 1,
+        "step_name": "乐乐坐在餐桌旁",
+        "step_description": "乐乐开心地坐在小椅子上，面前是彩色的小餐盘和勺子。爸爸妈妈微笑着坐在旁边，桌上有一碗冒着热气的卡通米饭。音乐轻快，画面明亮温暖，乐乐拍拍小手说：‘吃饭啦！’",
+        "learning_objective": "学会在饭点坐到餐桌旁，准备和爸爸妈妈一起吃饭"
+      },
+      {
+        "step_number": 2,
+        "step_name": "乐乐看着好吃的食物",
+        "step_description": "乐乐睁大眼睛看餐盘，里面有黄色的玉米粒、红色的小番茄和绿色的青豆，像彩虹一样。爸爸指着食物说：‘好吃的来啦！’妈妈轻轻点头，乐乐笑着说：‘好吃的！’",
+        "learning_objective": "认识餐桌上常见的健康食物，建立对食物的兴趣"
+      },
+      {
+        "step_number": 3,
+        "step_name": "乐乐用小勺吃一口",
+        "step_description": "乐乐拿起小黄勺，舀起一粒玉米放进嘴里，眼睛笑成月牙。背景音乐中男生轻快唱道：‘啊呜一口，真香呀！’爸爸妈妈轻轻鼓掌，桌上食物微微发光。",
+        "learning_objective": "学习使用餐具自主进食，体验吃一口的快乐"
+      },
+      {
+        "step_number": 4,
+        "step_name": "大家一起吃饭真开心",
+        "step_description": "乐乐、爸爸、妈妈一起用餐，每个人脸上都带着微笑。桌上食物丰富但不杂乱，背景有小鸟在窗外唱歌。乐乐说：‘和爸爸妈妈吃饭，好开心！’",
+        "learning_objective": "理解与家人共餐的温馨氛围，增强亲子互动体验"
+      },
+      {
+        "step_number": 5,
+        "step_name": "吃完饭乐乐拍拍小肚子",
+        "step_description": "乐乐放下小勺，摸着圆鼓鼓的小肚子咯咯笑，说：‘吃饱啦！’爸爸妈妈竖起大拇指。桌上餐盘变干净，一朵小花从盘中轻轻升起，音乐渐渐温柔结束。",
+        "learning_objective": "学会表达吃饱了的感觉，完成用餐流程"
+      }
+    ],
+    "character_name": "乐乐",
+    "character_description": "活泼可爱的男孩，热爱家庭时光"
+  },
+  "stepContents": [
+    {
+      "stepIndex": 0,
+      "lyrics": "[Verse]  \n乐乐坐好，小椅咯吱吱，  \n餐盘亮亮，勺子叮叮叮。  \n热气冒冒，米饭香喷喷，  \n拍拍小手，吃饭啦！  \n\n[Chorus]  \n吃饭啦，吃饭啦，  \n坐好不乱爬；  \n吃饭啦，吃饭啦，  \n和爸妈一起呀！  \n\n[Verse]  \n爸爸微笑，妈妈点点头，  \n乐乐张嘴，啊呜吃一口。  \n碗里光光，真棒真棒棒，  \n吃饭啦，笑哈哈！  \n\n[Chorus]  \n吃饭啦，吃饭啦，  \n坐好不乱爬；  \n吃饭啦，吃饭啦，  \n和爸妈一起呀！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/ce/20260117/d23adf3d/b50c456f-6f79-4f55-810f-cd6170a2f0821387335954.png?Expires=1769270302&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=FaKQ9XXaQJsbbIhXAyFWQBBmZqQ%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=caa73294-5b6d-4eb8-a7b6-0f02d2e82183",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 1,
+      "lyrics": "[Verse]  \n乐乐看，乐乐笑，  \n玉米黄，真奇妙！  \n小番茄，红又亮，  \n青豆豆，绿光光！  \n\n[Chorus]  \n好吃的，好吃的，  \n啦啦啦，来吃饭！  \n好吃的，好吃的，  \n乐乐爱，每一餐！  \n\n[Verse]  \n爸爸说：吃一口！  \n妈妈点，点点头！  \n彩虹饭，真美丽，  \n乐乐笑：真好吃！  \n\n[Chorus]  \n好吃的，好吃的，  \n啦啦啦，来吃饭！  \n好吃的，好吃的，  \n乐乐爱，每一餐！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/4a/20260117/d23adf3d/cba215c5-fd8f-4ed4-8aba-5153bded29f2138047455.png?Expires=1769270400&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=go24qi3W7YjWyqttk8xpNrTCrXM%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=352d1748-cdbd-4d3c-a76a-cd499889cb89",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 2,
+      "lyrics": "[Verse]  \n乐乐拿小勺，  \n舀一粒玉米，  \n啊呜一口，真香呀！  \n啊呜一口，真香呀！\n\n[Verse]  \n小黄勺，亮闪闪，  \n一口一口吃得欢，  \n爸爸妈妈拍拍手，  \n啦啦啦，真香呀！\n\n[Chorus]  \n啊呜啊呜，真香呀！  \n啊呜啊呜，真香呀！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/c3/20260117/d23adf3d/a248eff1-5a61-489c-ac27-4f9320f55f6a2713456101.png?Expires=1769270449&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=quRBFJghcPmIE5dc4SIm4UdtoN0%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=ebf2bad8-f4ba-4005-9da3-08f52c8e4b46",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 3,
+      "lyrics": "[Verse]  \n乐乐坐桌边，  \n爸爸笑开颜，  \n妈妈夹菜来，  \n嘻嘻真香甜。  \n\n[Verse]  \n小鸟窗外唱，  \n叮叮又当当，  \n大家一起吃，  \n啦啦真欢畅！  \n\n[Chorus]  \n吃饭啦，开心呀，  \n和家人，笑哈哈，  \n吃饭啦，开心呀，  \n乐乐爱这个家！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/b7/20260117/d23adf3d/3d2408aa-8a34-40ce-b416-a8d78eeffb413430106707.png?Expires=1769270500&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=PjnL1iLiPsUNdA5y6eT1NP1IxiU%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=d0f94a09-7dfc-4221-adf2-0947ed604e4e",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 4,
+      "lyrics": "[Verse]  \n乐乐吃饱饱  \n拍拍小肚子  \n咯咯笑一笑  \n勺子放好  \n\n[Chorus]  \n吃饱啦，真开心  \n吃饱啦，真开心  \n\n[Verse]  \n盘子亮晶晶  \n小花升起来  \n爸爸妈妈夸  \n乐乐真棒  \n\n[Chorus]  \n吃饱啦，真开心  \n吃饱啦，真开心",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/f3/20260117/d23adf3d/554f785e-518c-4c66-b006-da1b5035efb2863734562.png?Expires=1769270547&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=CRCq4t5VPuCrwElIwPZoAL3DJEU%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=b7d0afa8-f86c-4ac1-b0ee-73e733929e17",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    }
+  ],
+  "createdAt": "2026-01-17T15:46:42.098Z"
+}

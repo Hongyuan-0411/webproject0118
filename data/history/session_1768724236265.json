@@ -1,0 +1,92 @@
+{
+  "sessionId": "session_1768724236265",
+  "userGoal": "认识火车",
+  "learningFocus": "",
+  "musicStyle": "欢快",
+  "musicVoice": "男生",
+  "pictureBookStyle": "童话",
+  "characterType": "男生",
+  "decomposedData": {
+    "steps": [
+      {
+        "step_number": 1,
+        "step_name": "乐乐看见大火车",
+        "step_description": "画面中阳光明媚，草地绿油油，远处开过来一列彩色的小火车，车头画着笑脸。乐乐站在站台边挥手，火车‘呜呜’欢快地回应。男生唱：‘乐乐看见大火车，嘟嘟嘟向前跑，红车身黄车轮，朋友一起笑。’音乐轻快，节奏简单重复。",
+        "learning_objective": "初步感知火车的外形和声音"
+      },
+      {
+        "step_number": 2,
+        "step_name": "乐乐数火车车厢",
+        "step_description": "火车缓缓停下，乐乐走近数车厢：‘一节、两节、三节车厢排排队！’每节数到时对应车厢亮起柔和彩光。男生唱：‘一节车厢叮叮咚，两节车厢咚咚响，三节火车手拉手，出发去远方。’音乐配合节奏轻拍伴奏。",
+        "learning_objective": "认识火车由多节车厢组成，建立数量概念"
+      },
+      {
+        "step_number": 3,
+        "step_name": "乐乐坐上小火车",
+        "step_description": "车门轻轻打开，乐乐在微笑司机示意下登上第一节车厢。车内干净明亮，窗户上有太阳笑脸。男生唱：‘乐乐上火车，咔嚓咔嚓走，穿过花草地，快乐跟着跑。’窗外风景缓缓移动，展现小桥、河流与蝴蝶飞舞。",
+        "learning_objective": "理解火车可以载人行驶，增强代入感"
+      },
+      {
+        "step_number": 4,
+        "step_name": "火车带我们去朋友家",
+        "step_description": "火车经过彩虹桥，停在一个小房子前，小兔朋友在门口挥手欢迎。乐乐下车跑过去，两人击掌。男生唱：‘火车开呀开，带着好朋友，穿过彩虹桥，笑声满路走。’背景色彩温暖，动作缓慢流畅。",
+        "learning_objective": "理解火车的交通功能，建立社交联结"
+      }
+    ],
+    "character_name": "乐乐",
+    "character_description": "开朗男孩，喜欢探索新事物",
+    "character_sheet": {
+      "name": "乐乐",
+      "type": "男生",
+      "age": "大约5岁",
+      "face": "圆脸，大眼睛，微笑",
+      "hair": "黑色短发，齐刘海",
+      "outfit": "蓝色连帽卫衣，黄色长裤，白色运动鞋",
+      "accessory": "红色小背包",
+      "main_colors": [
+        "蓝色",
+        "黄色"
+      ],
+      "reference_prompt": "圆脸大眼睛男孩，黑色短发齐刘海，穿蓝色连帽卫衣和黄色长裤，背红色小背包，始终微笑，画风温馨童话"
+    }
+  },
+  "stepContents": [
+    {
+      "stepIndex": 0,
+      "lyrics": "[Verse]  \n乐乐站台瞧一瞧  \n火车呜呜进站了  \n红车身 黄车轮  \n嘟嘟嘟 向前跑  \n\n[Chorus]  \n大火车 大火车  \n呜呜呜 呜呜呜  \n大火车 大火车  \n笑嘻嘻 跑来了  \n\n[Verse]  \n乐乐挥手笑哈哈  \n火车叮咚回应他  \n红车身 黄车轮  \n朋友一起笑开花",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/97/20260118/d23adf3d/5d0392cf-dff1-4e8b-b09c-8bc4669e76ab2274821188.png?Expires=1769330009&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=%2F%2FbhJXVuK5cQK5mJxS47ZELkNww%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=22e62535-f3c9-4707-9fbd-9f47e8179b6e",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 1,
+      "lyrics": "[Verse]  \n乐乐数车厢，一节叮叮咚  \n两节咚咚响，亮起小彩灯  \n\n[Chorus]  \n一二三，排排队，排排队  \n火车出发咯，呜呜向前走  \n\n[Verse]  \n乐乐数车厢，三节手拉手  \n亮亮亮，排排队，出发去远游  \n\n[Chorus]  \n一二三，排排队，排排队  \n火车出发咯，呜呜向前走",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/b5/20260118/d23adf3d/de3fc859-f42a-48b5-8b99-8a8f77a19c87338308756.png?Expires=1769330063&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=xZmwJj8xamxjuXfS96EbIIet14M%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=0beeacf7-53bb-4a18-a2f3-ec493b8512f4",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 2,
+      "lyrics": "[Verse]  \n乐乐上火车，咔嚓咔嚓走  \n穿过花草地，快乐跟着跑  \n\n[Chorus]  \n咔嚓咔嚓 咔嚓咔嚓 车轮响  \n乐乐坐火车 看风景多漂亮  \n\n[Verse]  \n小桥哗啦啦 河水叮叮咚  \n蝴蝶飞呀飞 笑声满车中",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/dc/20260118/d23adf3d/28f86409-02ce-4ccd-8a91-76b0fdedd70a1804749668.png?Expires=1769330104&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=e5DPVZV%2BH2diik4ZjZ9pi1iwqF4%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=af09a20e-5db8-4cac-b572-c83b0622ba24",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 3,
+      "lyrics": "[Verse]  \n乐乐上火车，呜呜向前走  \n穿过彩虹桥，风景真美丽  \n小兔在招手，笑得甜又柔  \n\n[Chorus]  \n火车开呀开，带我去朋友家  \n火车开呀开，快乐一路洒  \n\n[Verse]  \n车门轻轻开，乐乐下车跑  \n拍拍小手掌，朋友真热闹  \n\n[Chorus]  \n火车开呀开，带我去朋友家  \n火车开呀开，快乐一路洒",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/48/20260118/d23adf3d/cc48f544-cbc2-4d0c-9c2a-364fb0f5918c3196809889.png?Expires=1769330167&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=UTp%2BTtDew4wu6GkioqYKjl8dTsY%3D",
+      "audioUrl": "https://cdn1.suno.ai/aa4f9f79-f2fc-4575-839a-63db0573f153.mp3",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    }
+  ],
+  "createdAt": "2026-01-18T08:20:05.969Z"
+}

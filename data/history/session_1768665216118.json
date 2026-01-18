@@ -1,0 +1,93 @@
+{
+  "sessionId": "session_1768665216118",
+  "userGoal": "认识难过情绪",
+  "learningFocus": "",
+  "musicStyle": "欢快",
+  "musicVoice": "男生",
+  "pictureBookStyle": "童话",
+  "characterType": "男生",
+  "decomposedData": {
+    "steps": [
+      {
+        "step_number": 1,
+        "step_name": "认识乐乐的笑脸",
+        "step_description": "画面中，乐乐在阳光下的草地上跳跃，脸上挂着大大的笑容。他挥手说：‘我是乐乐！今天真开心！’背景音乐轻快活泼，歌词简单重复：‘乐乐笑哈哈，太阳照着我，蹦蹦又跳跳，快乐像花朵！’通过重复动作和旋律帮助孩子识别开心表情。",
+        "learning_objective": "建立安全感，认识角色并初步感知情绪表达"
+      },
+      {
+        "step_number": 2,
+        "step_name": "乐乐的小乌云",
+        "step_description": "乐乐拿着气球走在彩虹路上，突然气球飞走了。天空飘来一朵小小灰云，乐乐低头看着天空，小声说：‘我的气球不见了……’但表情温和，没有哭泣。音乐转为柔和节奏，男生轻唱：‘有点小失落，没关系呀，深呼吸，慢慢来。’强调情绪被接纳。",
+        "learning_objective": "引入‘难过’是一种可以被命名的轻微情绪"
+      },
+      {
+        "step_number": 3,
+        "step_name": "好朋友来帮忙",
+        "step_description": "小兔子蹦出来，递给乐乐一朵彩色小花。乐乐接过花，轻轻微笑。画面温暖明亮，灰云变小。音乐变得温柔而有希望：‘你有小难过，我陪你一起，一朵小花送给你，心情会美丽。’突出同伴支持与情绪缓解。",
+        "learning_objective": "理解难过时可以接受帮助，情绪会变化"
+      },
+      {
+        "step_number": 4,
+        "step_name": "乐乐说出心里话",
+        "step_description": "乐乐站在镜子前，指着自己的小脸说：‘刚才我有点难过，因为气球飞走了。现在我拿着小花，感觉好一些了。’音乐轻快回归，男生唱：‘说出来真好，心情轻轻飘，难过会走掉，朋友最重要。’鼓励表达情绪。",
+        "learning_objective": "学习用语言表达‘难过’情绪及其原因"
+      },
+      {
+        "step_number": 5,
+        "step_name": "我们一起做表情",
+        "step_description": "乐乐邀请小朋友一起做表情游戏。他先做笑脸，再做轻轻低头的样子，说：‘这是开心，这是有点难过。’每做一次，就有小星星闪一下。欢快音乐响起：‘我会做表情，心情都知道，乐乐和你手拉手，一起懂情绪！’",
+        "learning_objective": "模仿并区分基本情绪表情，增强情绪认知能力"
+      }
+    ],
+    "character_name": "乐乐",
+    "character_description": "爱笑的男孩，穿着彩虹背带裤"
+  },
+  "stepContents": [
+    {
+      "stepIndex": 0,
+      "lyrics": "[Verse]  \n乐乐笑，哈哈笑，  \n太阳出来蹦蹦跳。  \n啦啦啦，咚咚咚，  \n乐乐开心像花红！  \n\n[Verse]  \n乐乐跳，哈哈笑，  \n草地软软真奇妙。  \n啦啦啦，咚咚咚，  \n乐乐笑脸我知道！  \n\n[Chorus]  \n乐乐笑哈哈，笑哈哈，  \n我是快乐的小娃娃！  \n乐乐笑哈哈，笑哈哈，  \n你也能笑像朵花！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/52/20260117/d23adf3d/fe258ba7-7043-470b-9b71-3334357c3b674006935973.png?Expires=1769270956&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=l%2Bz8%2FBoY58UPKJPfWMq1bObXVh8%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=60707de8-1d06-4533-9ec5-ae1a2d2c4d5c",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 1,
+      "lyrics": "[Verse]  \n乐乐走，彩虹路，  \n气球飞，呜呜呜～  \n小小云，飘过来，  \n嘀嗒落，凉悠悠。  \n\n[Chorus]  \n难过呀，没关系，  \n深呼吸，笑嘻嘻～  \n难过呀，没关系，  \n啦啦啦，抱抱你！  \n\n[Verse]  \n乐乐看，灰灰云，  \n小声说：不见了……  \n风轻轻，吹吹脸，  \n呼——呼——好安静。  \n\n[Chorus]  \n难过呀，没关系，  \n深呼吸，笑嘻嘻～  \n难过呀，没关系，  \n啦啦啦，抱抱你！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/91/20260117/d23adf3d/a735ac43-0846-4ddb-8157-e7a5cf71a8ae257687665.png?Expires=1769271042&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=71ZTtwcmvbDbZ%2Fy4al2Hw%2BINaN4%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=baa8c94a-67fa-4935-a435-e8cb5c57d50f",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 2,
+      "lyrics": "[Verse]  \n乐乐不开心，嗯嗯不出声，  \n小兔蹦出来，啦啦递花花。  \n彩色小花花，香香又美美，  \n乐乐笑一笑，嘻嘻变美丽。  \n\n[Chorus]  \n有你来帮忙，难过飞走啦！  \n有你来帮忙，难过飞走啦！  \n\n[Verse]  \n云儿变小小，光光洒下来，  \n乐乐牵小手，蹦蹦回家啦。  \n好朋友帮忙，心心暖暖的，  \n难过会过去，笑一笑最棒！  \n\n[Chorus]  \n有你来帮忙，难过飞走啦！  \n有你来帮忙，难过飞走啦！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/82/20260117/d23adf3d/b60e42d2-d231-46ca-a98b-e3ab3f722d291824581872.png?Expires=1769271094&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=Nav34gDCl22sERRInvPzy1OMm78%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=3e764f02-342f-4b63-b6cd-59ddc2fe3e8f",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 3,
+      "lyrics": "[Verse]  \n乐乐照镜子，啊呜呜，  \n气球飞走了，好难过。  \n低下小脑袋，泪汪汪，  \n说出来，说出来，心里亮。  \n\n[Verse]  \n乐乐点点头，啦啦啦，  \n手里有朵花，笑一下。  \n“我难过呀，因为风，  \n吹走气球，飘天空。”  \n\n[Chorus]  \n说出来，真不难，  \n难过飞走像云散。  \n朋友听我说，拍拍肩，  \n心情轻轻飘，啦啦啦！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/a0/20260117/d23adf3d/d66c49e6-ef59-4f01-9bfa-cc55344256ff2046732499.png?Expires=1769271150&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=R8QpDz7mqlyGPmg6QeweG8nPmlU%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=2778168e-ea48-44c0-9718-eb949063d1b0",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 4,
+      "lyrics": "[Verse]  \n乐乐笑一笑  \n眼睛弯弯像月牙  \n我们一起做表情  \n开心就像小红花  \n\n[Chorus]  \n我会做表情  \n心情都知道  \n乐乐和你手拉手  \n一起懂情绪！  \n\n[Verse]  \n头儿轻轻低  \n有点难过没关系  \n眨眨眼睛冒星星  \n心情变美丽  \n\n[Chorus]  \n我会做表情  \n心情都知道  \n乐乐和你手拉手  \n一起懂情绪！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/67/20260117/d23adf3d/114fa3ae-59b5-414e-9892-4f1d54f274481442346359.png?Expires=1769271209&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=gIO2aWSFbK93Y8VTtpo7ocTVIjU%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=5e2edb66-5643-488b-9aae-df6647205436",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    }
+  ],
+  "createdAt": "2026-01-17T15:57:11.184Z"
+}

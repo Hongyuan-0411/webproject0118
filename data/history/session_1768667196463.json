@@ -1,0 +1,93 @@
+{
+  "sessionId": "session_1768667196463",
+  "userGoal": "认识学校",
+  "learningFocus": "",
+  "musicStyle": "欢快",
+  "musicVoice": "男生",
+  "pictureBookStyle": "童话",
+  "characterType": "男生",
+  "decomposedData": {
+    "steps": [
+      {
+        "step_number": 1,
+        "step_name": "乐乐看见学校",
+        "step_description": "画面中阳光明媚，乐乐站在远处指着一座彩色的小房子学校，屋顶有星星图案，门口飘着气球。他开心地跳了跳，音乐轻快响起，歌词说：‘这是学校，我的新地方，看它多漂亮！’",
+        "learning_objective": "初步感知学校的外观和存在"
+      },
+      {
+        "step_number": 2,
+        "step_name": "乐乐走进学校",
+        "step_description": "乐乐慢慢走近学校大门，门自动打开，里面亮着柔和的光。老师微笑着挥手，墙上贴着笑脸贴纸。音乐唱道：‘轻轻走过去，大家欢迎我，学校真温暖！’",
+        "learning_objective": "建立进入学校的积极体验"
+      },
+      {
+        "step_number": 3,
+        "step_name": "乐乐认识教室",
+        "step_description": "乐乐走进明亮的教室，看到小桌子、彩色椅子和玩具架。他坐到标有名字的座位上，一只布偶兔子对他微笑。音乐唱：‘这是我的桌，这是我的椅，一起玩游戏！’",
+        "learning_objective": "熟悉教室环境与个人空间"
+      },
+      {
+        "step_number": 4,
+        "step_name": "乐乐和朋友一起上课",
+        "step_description": "乐乐和两位小朋友围坐圆圈，老师弹琴，大家一起拍手唱歌。乐乐举手回答问题，大家都鼓掌。音乐唱：‘我们一起学，一起拍拍手，快乐在心头！’",
+        "learning_objective": "理解学校中的社交与学习活动"
+      },
+      {
+        "step_number": 5,
+        "step_name": "乐乐喜欢上学",
+        "step_description": "放学时，乐乐背着小书包，回头对学校挥手说‘明天见！’太阳笑眯眯，小鸟飞过。音乐结尾唱：‘学校真有趣，天天都想来，我是快乐的乐乐！’",
+        "learning_objective": "建立对学校的正面情感联结"
+      }
+    ],
+    "character_name": "乐乐",
+    "character_description": "活泼开朗的男孩，爱笑爱探索"
+  },
+  "stepContents": [
+    {
+      "stepIndex": 0,
+      "lyrics": "[Verse]  \n乐乐指一指，  \n学校在这里！  \n彩色小房子，  \n星星在屋顶。  \n\n[Verse]  \n啦啦啦，真欢喜，  \n气球飘呀起～  \n这是新地方，  \n我的学校呀！  \n\n[Chorus]  \n学校学校真漂亮，  \n学校学校我向往，  \n乐乐乐乐笑哈哈，  \n一起上学吧！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/42/20260118/d23adf3d/3d9b80dc-6ef9-4c80-9258-b9b5c12774533517045713.png?Expires=1769272970&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=OzsqDi5JWLu9xKKqcFWlWHbRAaM%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=e2590f8e-8ed1-4fa1-b63b-002ca48d8309",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 1,
+      "lyrics": "[Verse]  \n乐乐走，乐乐笑，  \n轻轻走到学校门口瞧一瞧。  \n叮咚门开了，啦啦啦，  \n老师招手说：欢迎你呀！\n\n[Verse]  \n贴纸墙，笑眯眯，  \n像在说：乐乐快来坐一起。  \n咚咚咚走路，嘻嘻嘻笑，  \n学校温暖像妈妈抱。\n\n[Chorus]  \n乐乐走进学校，学校真温暖！  \n乐乐走进学校，大家欢迎我！  \n啦啦啦，嘻嘻嘻，  \n我们一起唱首歌！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/f0/20260118/d23adf3d/517e1acb-b39b-4453-a89b-5318fb53f9813180426061.png?Expires=1769273026&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=ch6rFsOYLVtmQvT53OWI3vrYZzU%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=1e68246a-cf85-46df-9dea-d6f9a5c7d4ba",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 2,
+      "lyrics": "[Verse]  \n乐乐进教室，啦啦啦，  \n小桌椅，亮堂堂。  \n这是我的桌，  \n这是我的椅，  \n\n[Chorus]  \n叮叮当，玩游戏！  \n叮叮当，笑嘻嘻！  \n\n[Verse]  \n玩具架，红黄蓝，  \n布偶兔，笑弯弯。  \n乐乐坐得好，  \n名字贴上瞧，  \n\n[Chorus]  \n叮叮当，玩游戏！  \n叮叮当，笑嘻嘻！",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/e3/20260118/d23adf3d/9acdb400-f2dd-45e2-be3f-256420f556902094175056.png?Expires=1769273067&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=cYgwbXRsBaZbQlluu6Ww2mL7T1o%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=bd779876-e7b4-4f59-89b1-530e5f76617e",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 3,
+      "lyrics": "[Verse]  \n乐乐坐圆圈，啦啦啦  \n老师弹琴，咚咚咚  \n拍拍小手，一二三  \n大家一起，笑呵呵  \n\n[Verse]  \n乐乐举小手，我来答  \n答对问题，顶呱呱  \n小朋友呀，鼓掌呀  \n噼噼啪，噼噼啪  \n\n[Chorus]  \n我们一起学，一起拍拍手  \n快乐在心头，啦啦啦  \n我们一起学，一起拍拍手  \n快乐在心头，哈哈哈",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/8e/20260118/d23adf3d/7f94541e-6df3-4695-82a1-d3fb4feca0bf460249587.png?Expires=1769273114&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=n7AnHFUcuJqURELFExpUhbjTLn8%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=9f4c346d-6224-423f-ad23-acf689016927",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    },
+    {
+      "stepIndex": 4,
+      "lyrics": "[Verse]  \n乐乐背书包，笑嘻嘻  \n回头说声“明天见”  \n太阳眯眯笑，暖洋洋  \n小鸟飞过真欢喜  \n\n[Chorus]  \n学校真有趣，天天都想来  \n我是快乐的乐乐！  \n学校真有趣，天天都想来  \n我是快乐的乐乐！  \n\n[Verse]  \n乐乐爱学校，拍拍手  \n蹦蹦跳跳回家喽  \n老师再见啦，小朋友  \n明天一起做游戏",
+      "imageUrl": "https://dashscope-result-sh.oss-cn-shanghai.aliyuncs.com/7d/60/20260118/d23adf3d/862b2535-a423-4f0a-9783-f7c205d86e3e4034071721.png?Expires=1769273166&OSSAccessKeyId=LTAI5tKPD3TMqf2Lna1fASuh&Signature=xwQmtXxTJkbo43T5f6HJaR0uEw8%3D",
+      "audioUrl": "https://audiopipe.suno.ai/?item_id=eae5e4fb-04ec-4b63-b8a1-a3b0626c40e8",
+      "lyricsError": null,
+      "imageError": null,
+      "audioError": null
+    }
+  ],
+  "createdAt": "2026-01-17T16:29:56.043Z"
+}
