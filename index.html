@@ -2721,14 +2721,32 @@
       decomposedData = historyData.decomposedData;
       currentStepIndex = 0;
 
-      // 导入步骤内容
-      stepContents = historyData.stepContents.map(item => ({
-        lyrics: item.lyrics,
-        imageUrl: item.imageUrl,
-        audioUrl: item.audioUrl,
-        lyricsError: item.lyricsError,
-        imageError: item.imageError,
-        audioError: item.audioError,
+      // 导入步骤内容 - 从本地 data 文件夹加载
+      stepContents = await Promise.all(historyData.stepContents.map(async (item, index) => {
+        const stepNumber = index + 1;
+        let lyricsContent = '';
+        let lyricsErr = null;
+
+        try {
+          // 从新接口加载歌词
+          const lyricsResp = await fetch(`/api/asset?session=${sessionId}&step=${stepNumber}&type=lyrics`);
+          if (lyricsResp.ok) {
+            lyricsContent = await lyricsResp.text();
+          } else if (lyricsResp.status !== 404) { // 404 is acceptable (old data)
+            lyricsErr = `Failed to load local lyrics (status: ${lyricsResp.status})`;
+          }
+        } catch (e) {
+          lyricsErr = `Error fetching local lyrics: ${e.message}`;
+        }
+
+        return {
+          lyrics: lyricsContent || item.lyrics, // Fallback to old data if local fails
+          imageUrl: `/api/asset?session=${sessionId}&step=${stepNumber}&type=image`,
+          audioUrl: `/api/asset?session=${sessionId}&step=${stepNumber}&type=audio`,
+          lyricsError: lyricsErr,
+          imageError: null, // Errors will be handled by onerror events
+          audioError: null,
+        };
       }));
 
       // 导入设置

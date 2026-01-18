@@ -911,6 +911,155 @@ async function handler(req, res) {
       }
     }
 
+    // API: Serve local assets from data folder
+    if (req.method === 'GET' && url.pathname.startsWith('/api/asset')) {
+      const sessionId = url.searchParams.get('session');
+      const stepIndex = url.searchParams.get('step');
+      const type = url.searchParams.get('type');
+
+      if (!sessionId || !stepIndex || !type) {
+        return send(res, 400, { error: 'Missing required parameters: session, step, type' });
+      }
+
+      // --- Security Validation ---
+      if (!/^[a-zA-Z0-9_]+$/.test(sessionId) || !/^[1-9][0-9]*$/.test(stepIndex)) {
+          return send(res, 400, { error: 'Invalid parameter format' });
+      }
+
+      const allowedTypes = { 'image': 'image.png', 'audio': 'audio.mp3', 'lyrics': 'lyrics.txt' };
+      if (!allowedTypes[type]) {
+          return send(res, 400, { error: 'Invalid asset type' });
+      }
+
+      const filename = `step_${stepIndex}_${allowedTypes[type]}`;
+      const dataRoot = path.resolve(__dirname, 'data');
+      const sessionPath = path.resolve(dataRoot, sessionId);
+
+      if (!sessionPath.startsWith(dataRoot)) {
+          return send(res, 403, { error: 'Forbidden: Path traversal attempt detected.' });
+      }
+
+      const filePath = path.join(sessionPath, filename);
+      if (!fs.existsSync(filePath)) {
+        // Fallback for older history items that might not have lyrics.txt
+        if (type === 'lyrics') {
+            res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8' });
+            return res.end(''); // Return empty content
+        }
+        return send(res, 404, { error: 'Asset not found' });
+      }
+
+      return sendFile(res, filePath);
+    }
+
+    // API: Serve local assets from data folder
+    if (req.method === 'GET' && url.pathname.startsWith('/api/asset')) {
+      const sessionId = url.searchParams.get('session');
+      const stepIndex = url.searchParams.get('step');
+      const type = url.searchParams.get('type');
+
+      if (!sessionId || !stepIndex || !type) {
+        return send(res, 400, { error: 'Missing required parameters: session, step, type' });
+      }
+
+      // --- Security Validation ---
+      if (!/^[a-zA-Z0-9_]+$/.test(sessionId) || !/^[1-9][0-9]*$/.test(stepIndex)) {
+          return send(res, 400, { error: 'Invalid parameter format' });
+      }
+
+      const allowedTypes = { 'image': 'image.png', 'audio': 'audio.mp3', 'lyrics': 'lyrics.txt' };
+      if (!allowedTypes[type]) {
+          return send(res, 400, { error: 'Invalid asset type' });
+      }
+
+      const filename = `step_${stepIndex}_${allowedTypes[type]}`;
+      const dataRoot = path.resolve(__dirname, 'data');
+      const sessionPath = path.resolve(dataRoot, sessionId);
+
+      if (!sessionPath.startsWith(dataRoot)) {
+          return send(res, 403, { error: 'Forbidden: Path traversal attempt detected.' });
+      }
+
+      const filePath = path.join(sessionPath, filename);
+      if (!fs.existsSync(filePath)) {
+        return send(res, 404, { error: 'Asset not found' });
+      }
+
+      return sendFile(res, filePath);
+    }
+
+    // API: Serve local assets from data folder
+    if (req.method === 'GET' && url.pathname.startsWith('/api/asset')) {
+      const sessionId = url.searchParams.get('session');
+      const stepIndex = url.searchParams.get('step');
+      const type = url.searchParams.get('type');
+
+      if (!sessionId || !stepIndex || !type) {
+        return send(res, 400, { error: 'Missing required parameters: session, step, type' });
+      }
+
+      // --- Security Validation ---
+      if (!/^[a-zA-Z0-9_]+$/.test(sessionId) || !/^[1-9][0-9]*$/.test(stepIndex)) {
+          return send(res, 400, { error: 'Invalid parameter format' });
+      }
+
+      const allowedTypes = { 'image': 'image.png', 'audio': 'audio.mp3', 'lyrics': 'lyrics.txt' };
+      if (!allowedTypes[type]) {
+          return send(res, 400, { error: 'Invalid asset type' });
+      }
+
+      const filename = `step_${stepIndex}_${allowedTypes[type]}`;
+      const dataRoot = path.resolve(__dirname, 'data');
+      const sessionPath = path.resolve(dataRoot, sessionId);
+
+      if (!sessionPath.startsWith(dataRoot)) {
+          return send(res, 403, { error: 'Forbidden: Path traversal attempt detected.' });
+      }
+
+      const filePath = path.join(sessionPath, filename);
+      if (!fs.existsSync(filePath)) {
+        return send(res, 404, { error: 'Asset not found' });
+      }
+
+      return sendFile(res, filePath);
+    }
+
+    // API: Serve local assets from data folder
+    if (req.method === 'GET' && url.pathname.startsWith('/api/asset')) {
+      const sessionId = url.searchParams.get('session');
+      const stepIndex = url.searchParams.get('step');
+      const type = url.searchParams.get('type');
+
+      if (!sessionId || !stepIndex || !type) {
+        return send(res, 400, { error: 'Missing required parameters: session, step, type' });
+      }
+
+      // --- Security Validation ---
+      if (!/^[a-zA-Z0-9_]+$/.test(sessionId) || !/^[1-9][0-9]*$/.test(stepIndex)) {
+          return send(res, 400, { error: 'Invalid parameter format' });
+      }
+
+      const allowedTypes = { 'image': 'image.png', 'audio': 'audio.mp3', 'lyrics': 'lyrics.txt' };
+      if (!allowedTypes[type]) {
+          return send(res, 400, { error: 'Invalid asset type' });
+      }
+
+      const filename = `step_${stepIndex}_${allowedTypes[type]}`;
+      const dataRoot = path.resolve(__dirname, 'data');
+      const sessionPath = path.resolve(dataRoot, sessionId);
+
+      if (!sessionPath.startsWith(dataRoot)) {
+          return send(res, 403, { error: 'Forbidden: Path traversal attempt detected.' });
+      }
+
+      const filePath = path.join(sessionPath, filename);
+      if (!fs.existsSync(filePath)) {
+        return send(res, 404, { error: 'Asset not found' });
+      }
+
+      return sendFile(res, filePath);
+    }
+
     // API: 图片生成 (DashScope qwen-image)
     if (req.method === 'POST' && url.pathname === '/api/generate-image') {
       if (!DASHSCOPE_API_KEY) {
